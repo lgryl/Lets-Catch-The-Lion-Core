@@ -8,8 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CB00699C259DC290008DD9F8 /* LetsCatchTheLionCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB006992259DC290008DD9F8 /* LetsCatchTheLionCore.framework */; };
-		CB0069A1259DC290008DD9F8 /* LetsCatchTheLionCoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069A0259DC290008DD9F8 /* LetsCatchTheLionCoreTests.swift */; };
 		CB0069A3259DC290008DD9F8 /* LetsCatchTheLionCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CB006995259DC290008DD9F8 /* LetsCatchTheLionCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CB0069B5259DC376008DD9F8 /* GameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069B4259DC376008DD9F8 /* GameTests.swift */; };
+		CB0069B9259DC39E008DD9F8 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069B8259DC39E008DD9F8 /* Game.swift */; };
+		CB0069BD259DC3E1008DD9F8 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069BC259DC3E1008DD9F8 /* Board.swift */; };
+		CB0069C1259DC701008DD9F8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069C0259DC701008DD9F8 /* Player.swift */; };
+		CB0069C5259DC73C008DD9F8 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069C4259DC73C008DD9F8 /* Piece.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +31,12 @@
 		CB006995259DC290008DD9F8 /* LetsCatchTheLionCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LetsCatchTheLionCore.h; sourceTree = "<group>"; };
 		CB006996259DC290008DD9F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB00699B259DC290008DD9F8 /* LetsCatchTheLionCoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LetsCatchTheLionCoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CB0069A0259DC290008DD9F8 /* LetsCatchTheLionCoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsCatchTheLionCoreTests.swift; sourceTree = "<group>"; };
 		CB0069A2259DC290008DD9F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB0069B4259DC376008DD9F8 /* GameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTests.swift; sourceTree = "<group>"; };
+		CB0069B8259DC39E008DD9F8 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		CB0069BC259DC3E1008DD9F8 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		CB0069C0259DC701008DD9F8 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		CB0069C4259DC73C008DD9F8 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +81,10 @@
 			children = (
 				CB006995259DC290008DD9F8 /* LetsCatchTheLionCore.h */,
 				CB006996259DC290008DD9F8 /* Info.plist */,
+				CB0069B8259DC39E008DD9F8 /* Game.swift */,
+				CB0069BC259DC3E1008DD9F8 /* Board.swift */,
+				CB0069C0259DC701008DD9F8 /* Player.swift */,
+				CB0069C4259DC73C008DD9F8 /* Piece.swift */,
 			);
 			path = LetsCatchTheLionCore;
 			sourceTree = "<group>";
@@ -80,8 +92,8 @@
 		CB00699F259DC290008DD9F8 /* LetsCatchTheLionCoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				CB0069A0259DC290008DD9F8 /* LetsCatchTheLionCoreTests.swift */,
 				CB0069A2259DC290008DD9F8 /* Info.plist */,
+				CB0069B4259DC376008DD9F8 /* GameTests.swift */,
 			);
 			path = LetsCatchTheLionCoreTests;
 			sourceTree = "<group>";
@@ -147,6 +159,7 @@
 				TargetAttributes = {
 					CB006991259DC290008DD9F8 = {
 						CreatedOnToolsVersion = 12.3;
+						LastSwiftMigration = 1230;
 					};
 					CB00699A259DC290008DD9F8 = {
 						CreatedOnToolsVersion = 12.3;
@@ -194,6 +207,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB0069C5259DC73C008DD9F8 /* Piece.swift in Sources */,
+				CB0069BD259DC3E1008DD9F8 /* Board.swift in Sources */,
+				CB0069C1259DC701008DD9F8 /* Player.swift in Sources */,
+				CB0069B9259DC39E008DD9F8 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB0069A1259DC290008DD9F8 /* LetsCatchTheLionCoreTests.swift in Sources */,
+				CB0069B5259DC376008DD9F8 /* GameTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +358,7 @@
 		CB0069A7259DC290008DD9F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5667E7L429;
@@ -357,6 +375,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = pl.lgryl.LetsCatchTheLionCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -365,6 +384,7 @@
 		CB0069A8259DC290008DD9F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 5667E7L429;
@@ -389,6 +409,7 @@
 		CB0069AA259DC290008DD9F8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5667E7L429;
 				INFOPLIST_FILE = LetsCatchTheLionCoreTests/Info.plist;
@@ -407,6 +428,7 @@
 		CB0069AB259DC290008DD9F8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5667E7L429;
 				INFOPLIST_FILE = LetsCatchTheLionCoreTests/Info.plist;
