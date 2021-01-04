@@ -2,7 +2,7 @@
 
 import Foundation
 
-class Player {
+public class Player {
+    var pieces: [Piece] = []
     var capturedPieces: [Piece] = []
 }
-

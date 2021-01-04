@@ -41,4 +41,24 @@ class GameTests: XCTestCase {
         let currentPlayer = tested.currentPlayer
         XCTAssertTrue(currentPlayer === player1)
     }
+
+    func test_newDobutsuGame_player1ShouldHave4Pieces() {
+        tested = Game(piecesArrangement: DobutsuPiecesArrangement())
+        XCTAssertEqual(4, tested.player1.pieces.count)
+    }
+
+    func test_newDobutsuGame_player2ShouldHave4Pieces() {
+        tested = Game(piecesArrangement: DobutsuPiecesArrangement())
+        XCTAssertEqual(4, tested.player2.pieces.count)
+    }
+
+    func test_newGoroGoroGame_player1ShouldHave8Pieces() {
+        tested = Game(piecesArrangement: GoroGoroPiecesArrangement())
+        XCTAssertEqual(8, tested.player1.pieces.count)
+    }
+
+    func test_newGoroGoroGame_player2ShouldHave8Pieces() {
+        tested = Game(piecesArrangement: GoroGoroPiecesArrangement())
+        XCTAssertEqual(8, tested.player2.pieces.count)
+    }
 }
