@@ -2,12 +2,12 @@
 
 import Foundation
 
-struct Game {
+public class Game {
     let board: Board
     let player1 = Player()
     let player2 = Player()
 
-    private(set) var currentPlayer: Player
+    private(set) var currentPlayer: PlayerType = .player1
 
     init(piecesArrangement: PiecesArrangement = DobutsuPiecesArrangement()) {
         do {
@@ -16,6 +16,25 @@ struct Game {
         } catch {
             board = Board()
         }
-        currentPlayer = player1
+    }
+
+    public func move(from startPoint: Point, to endPoint: Point) throws {
+        guard let pieceToMove = board.pieceAt(startPoint) else {
+            throw Error.pieceNotFound
+        }
+        guard pieceToMove.owner == currentPlayer else {
+            throw Error.playOrderViolation
+        }
+        try board.movePiece(from: startPoint, to: endPoint)
+        startNextPlayerTurn()
+    }
+
+    private func startNextPlayerTurn() {
+        currentPlayer.advance()
+    }
+
+    enum Error: Swift.Error {
+        case pieceNotFound
+        case playOrderViolation
     }
 }

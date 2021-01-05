@@ -2,6 +2,6 @@
 
 import Foundation
 
-class Dog: Piece {
+class Dog: GeneralPiece {
     
 }

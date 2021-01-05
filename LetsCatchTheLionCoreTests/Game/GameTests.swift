@@ -8,7 +8,7 @@ class GameTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        tested = Game()
+        tested = Game(piecesArrangement: DobutsuPiecesArrangement())
     }
 
     override func tearDown() {
@@ -37,9 +37,8 @@ class GameTests: XCTestCase {
     }
 
     func test_forNewGame_currentPlayerShouldBePlayer1() {
-        let player1 = tested.player1
         let currentPlayer = tested.currentPlayer
-        XCTAssertTrue(currentPlayer === player1)
+        XCTAssertTrue(currentPlayer == .player1)
     }
 
     func test_newDobutsuGame_player1ShouldHave4Pieces() {
@@ -60,5 +59,38 @@ class GameTests: XCTestCase {
     func test_newGoroGoroGame_player2ShouldHave8Pieces() {
         tested = Game(piecesArrangement: GoroGoroPiecesArrangement())
         XCTAssertEqual(8, tested.player2.pieces.count)
+    }
+
+    func test_afterInvalidMove_currentPlayerIsStillPlayer1() {
+        XCTAssertTrue(tested.currentPlayer == .player1)
+        guard let piece = tested.board.pieceAt(Point(x: 1, y: 2)),
+              piece is Chick else {
+            XCTFail()
+            return
+        }
+        _ = try? tested.move(from: Point(x: 1, y: 2), to: Point(x: 1, y: 2))
+        XCTAssertTrue(tested.currentPlayer == .player1)
+    }
+
+    func test_afterValidMove_currentPlayerIsPlayer2() {
+        XCTAssertTrue(tested.currentPlayer == .player1)
+        guard let piece = tested.board.pieceAt(Point(x: 2, y: 3)),
+              piece is Giraffe else {
+            XCTFail()
+            return
+        }
+        _ = try? tested.move(from: Point(x: 2, y: 3), to: Point(x: 2, y: 2))
+        XCTAssertTrue(tested.currentPlayer == .player2)
+    }
+
+    func test_movingPieceOfNonCurrentPlayer_throwsException() {
+        XCTAssertTrue(tested.currentPlayer == .player1)
+        guard let piece = tested.board.pieceAt(Point(x: 0, y: 0)),
+              piece is Giraffe else {
+            XCTFail()
+            return
+        }
+        XCTAssertEqual(.player2, piece.owner)
+        XCTAssertThrowsError(try tested.move(from: Point(x: 0, y: 0), to: Point(x: 0, y: 1)))
     }
 }

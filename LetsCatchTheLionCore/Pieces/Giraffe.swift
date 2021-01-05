@@ -2,6 +2,6 @@
 
 import Foundation
 
-class Giraffe: Piece {
+class Giraffe: GeneralPiece {
 
 }

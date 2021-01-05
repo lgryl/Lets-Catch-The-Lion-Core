@@ -2,6 +2,6 @@
 
 import Foundation
 
-class Cat: Piece {
+class Cat: GeneralPiece {
     
 }

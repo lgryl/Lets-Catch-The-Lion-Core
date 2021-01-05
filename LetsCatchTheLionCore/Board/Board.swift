@@ -2,7 +2,7 @@
 
 import Foundation
 
-public class Board {
+internal class Board {
     private static let minimumSize = Size(width: 3, height: 4)
     private static let maximumSize = Size(width: 9, height: 9)
 
@@ -47,7 +47,7 @@ public class Board {
     }
 
     @discardableResult
-    public func removePieceAt(_ point: Point) -> Piece? {
+    internal func removePieceAt(_ point: Point) -> Piece? {
         guard pointWithinBoard(point) else { return nil }
         let piece = pieceAt(point)
         pieces[point.x][point.y] = nil

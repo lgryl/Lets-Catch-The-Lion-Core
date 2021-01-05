@@ -10,14 +10,13 @@ struct BoardCreator {
         let board = try Board(width: piecesArrangement.width, height: piecesArrangement.height)
         for x in 0 ..< piecesArrangement.width {
             for y in 0 ..< piecesArrangement.height {
-                switch piecesArrangement.squareContentAt(x: x, y: y) {
-                case .none:
-                    continue
-                case .player1(let piece):
-                    player1.pieces.append(piece)
-                    board.place(piece, at: Point(x: x, y: y))
-                case .player2(let piece):
-                    player2.pieces.append(piece)
+                if let piece = piecesArrangement.pieceAt(x: x, y: y) {
+                    switch piece.owner {
+                    case .player1:
+                        player1.pieces.append(piece)
+                    case .player2:
+                        player2.pieces.append(piece)
+                    }
                     board.place(piece, at: Point(x: x, y: y))
                 }
             }

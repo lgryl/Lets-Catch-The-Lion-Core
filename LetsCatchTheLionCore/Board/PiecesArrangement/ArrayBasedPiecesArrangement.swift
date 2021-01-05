@@ -3,7 +3,7 @@
 import Foundation
 
 protocol ArrayBasedPiecesArrangement: PiecesArrangement {
-    var squareContents: [[SquareContent]] { get }
+    var squareContents: [[Piece?]] { get }
 }
 
 extension ArrayBasedPiecesArrangement {
@@ -14,7 +14,7 @@ extension ArrayBasedPiecesArrangement {
         squareContents[0].count
     }
 
-    func squareContentAt(x: Int, y: Int) -> SquareContent {
+    func pieceAt(x: Int, y: Int) -> Piece? {
         squareContents[x][y]
     }
 }
