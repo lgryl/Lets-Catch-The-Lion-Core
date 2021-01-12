@@ -3,9 +3,6 @@
 import Foundation
 
 internal class Board {
-    private static let minimumSize = Size(width: 3, height: 4)
-    private static let maximumSize = Size(width: 9, height: 9)
-
     private var pieces: [[Piece?]]
 
     public var width: Int {
@@ -16,18 +13,8 @@ internal class Board {
         pieces[0].count
     }
 
-    public init(width: Int, height: Int) throws {
-        guard width >= Self.minimumSize.width,
-              height >= Self.minimumSize.height,
-              width <= Self.maximumSize.width,
-              height <= Self.maximumSize.height else {
-            throw Error.invalidSize
-        }
+    public init(width: Int, height: Int) {
         pieces = Array(repeating: Array(repeating: nil, count: height), count: width)
-    }
-
-    public init() {
-        pieces = Array(repeating: Array(repeating: nil, count: Self.minimumSize.height), count: Self.minimumSize.width)
     }
 
     public func pieceAt(_ point: Point) -> Piece? {
@@ -75,14 +62,13 @@ internal class Board {
     }
 
     public enum Error: Swift.Error {
-        case invalidSize
         case invalidMove
         case pieceNotFound
         case pointOutsideBoard
     }
 }
 
-fileprivate struct Size {
+fileprivate struct BoardVariant {
     var width: Int
     var height: Int
 }

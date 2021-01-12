@@ -8,7 +8,7 @@ class BoardTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        tested = Board()
+        tested = Board(width: 3, height: 4)
     }
 
     override func tearDown() {
@@ -16,29 +16,9 @@ class BoardTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_defaultBoard_is3x4() {
-        assertBoard(tested, hasWidth: 3, andHeight: 4)
-    }
-
     func test_arbitraryBoard_hasPassedSize() throws {
-        tested = try Board(width: 7, height: 5)
+        tested = Board(width: 7, height: 5)
         assertBoard(tested, hasWidth: 7, andHeight: 5)
-    }
-
-    func test_arbitraryBoardOfWidthLessThan3_throwsException() {
-        XCTAssertThrowsError(try Board(width: 2, height: 5))
-    }
-
-    func test_arbitraryBoardOfHeightLessThan4_throwsException() {
-        XCTAssertThrowsError(try Board(width: 7, height: 3))
-    }
-
-    func test_arbitraryBoardOfWidthMoreThan9_throwsException() {
-        XCTAssertThrowsError(try Board(width: 10, height: 9))
-    }
-
-    func test_arbitraryBoardOfHeightMoreThan9_throwsException() {
-        XCTAssertThrowsError(try Board(width: 9, height: 10))
     }
 
     func test_newBoard_hasNoPieces() {
@@ -54,8 +34,8 @@ class BoardTests: XCTestCase {
         XCTAssertTrue(tested.pieceAt(Point(x: 1, y: 1)) is Lion)
     }
 
-    func test_placingPieceOutsideTheBoard_hasNoEffect() throws {
-        tested = try Board(width: 5, height: 5)
+    func test_placingPieceOutsideTheBoard_hasNoEffect() {
+        tested = Board(width: 5, height: 5)
         tested.place(Lion(owner: .player1), at: Point(x: 6, y: 6))
         XCTAssertNil(tested.pieceAt(Point(x: 6, y: 6)))
     }

@@ -22,13 +22,13 @@ class DobutsuBoardCreatorTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_dobutsuBoard_is3x4() throws {
-        let board = try tested.createBoard(from: DobutsuPiecesArrangement())
+    func test_dobutsuBoard_is3x4() {
+        let board = tested.createBoard(from: DobutsuPiecesArrangement())
         assertBoard(board, hasWidth: 3, andHeight: 4)
     }
 
-    func test_dobutsuBoard_hasCorrectSetup() throws {
-        let board = try tested.createBoard(from: DobutsuPiecesArrangement())
+    func test_dobutsuBoard_hasCorrectSetup() {
+        let board = tested.createBoard(from: DobutsuPiecesArrangement())
 
         XCTAssertTrue(board.pieceAt(Point(x: 0, y: 0)) is Giraffe)
         XCTAssertTrue(board.pieceAt(Point(x: 1, y: 0)) is Lion)

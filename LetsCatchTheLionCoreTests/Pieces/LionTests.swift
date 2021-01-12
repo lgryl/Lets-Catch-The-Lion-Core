@@ -19,6 +19,11 @@ class LionTests: XCTestCase {
         super.tearDown()
     }
 
+    func test_lion_cantStayInTheSameSquare() {
+        XCTAssertFalse(tested1.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 4)))
+        XCTAssertFalse(tested2.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 4)))
+    }
+
     func test_lion_canMoveUp() {
         XCTAssertTrue(tested1.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 3)))
         XCTAssertTrue(tested2.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 3)))

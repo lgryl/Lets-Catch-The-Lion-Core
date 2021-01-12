@@ -22,13 +22,13 @@ class GoroGoroBoardCreatorTests: XCTestCase {
         super.tearDown()
     }
 
-    func test_goroGoroBoard_is5x6() throws {
-        let board = try tested.createBoard(from: GoroGoroPiecesArrangement())
+    func test_goroGoroBoard_is5x6() {
+        let board = tested.createBoard(from: GoroGoroPiecesArrangement())
         assertBoard(board, hasWidth: 5, andHeight: 6)
     }
 
-    func test_dobutsuBoard_hasCorrectSetup() throws {
-        let board = try tested.createBoard(from: GoroGoroPiecesArrangement())
+    func test_dobutsuBoard_hasCorrectSetup() {
+        let board = tested.createBoard(from: GoroGoroPiecesArrangement())
 
         XCTAssertTrue(board.pieceAt(Point(x: 0, y: 0)) is Cat)
         XCTAssertTrue(board.pieceAt(Point(x: 1, y: 0)) is Dog)

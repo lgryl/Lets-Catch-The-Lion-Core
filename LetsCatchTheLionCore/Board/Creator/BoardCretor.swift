@@ -2,12 +2,12 @@
 
 import Foundation
 
-struct BoardCreator {
+internal struct BoardCreator {
     let player1: Player
     let player2: Player
 
-    func createBoard(from piecesArrangement: PiecesArrangement) throws -> Board {
-        let board = try Board(width: piecesArrangement.width, height: piecesArrangement.height)
+    func createBoard(from piecesArrangement: PiecesArrangement) -> Board {
+        let board = Board(width: piecesArrangement.width, height: piecesArrangement.height)
         for x in 0 ..< piecesArrangement.width {
             for y in 0 ..< piecesArrangement.height {
                 if let piece = piecesArrangement.pieceAt(x: x, y: y) {

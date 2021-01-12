@@ -2,22 +2,19 @@
 
 import Foundation
 
-public protocol Piece {
-    var owner: PlayerType { get }
+public protocol Piece: AnyObject {
+    var owner: PlayerType { get set }
     func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool
 }
 
 public class GeneralPiece: Piece {
+    public func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool {
+        false
+    }
+
     public var owner: PlayerType
     init(owner: PlayerType) {
         self.owner = owner
-    }
-
-}
-
-extension Piece {
-    public func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool {
-        false
     }
 }
 
@@ -31,12 +28,12 @@ public enum PlayerType {
     case player1
     case player2
 
-    mutating func advance() {
+    var next: Self {
         switch self {
         case .player1:
-            self = .player2
+            return .player2
         case .player2:
-            self = .player1
+            return .player1
         }
     }
 }

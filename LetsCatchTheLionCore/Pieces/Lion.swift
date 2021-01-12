@@ -3,7 +3,8 @@
 import Foundation
 
 class Lion: GeneralPiece {
-    func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool {
-        abs(endPoint.x - startPoint.x) <= 1 && abs(endPoint.y - startPoint.y) <= 1
+    override func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool {
+        guard startPoint != endPoint else { return false }
+        return abs(endPoint.x - startPoint.x) <= 1 && abs(endPoint.y - startPoint.y) <= 1
     }
 }

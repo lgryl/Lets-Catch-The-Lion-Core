@@ -32,6 +32,9 @@
 		CB2E100825A2126400AA1A9F /* BoardCretor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E100725A2126400AA1A9F /* BoardCretor.swift */; };
 		CBA6B93F25A3899000B33E60 /* ChickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B93E25A3899000B33E60 /* ChickTests.swift */; };
 		CBA6B94525A4BB3900B33E60 /* ElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */; };
+		CBAF5D5225A6140700D53C76 /* GiraffeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */; };
+		CBE8EBB625AA04A6000B9F2A /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8EBB525AA04A6000B9F2A /* GameState.swift */; };
+		CBE8EBBA25AA0A88000B9F2A /* GameVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8EBB925AA0A88000B9F2A /* GameVariant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		CB2E100725A2126400AA1A9F /* BoardCretor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCretor.swift; sourceTree = "<group>"; };
 		CBA6B93E25A3899000B33E60 /* ChickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickTests.swift; sourceTree = "<group>"; };
 		CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantTests.swift; sourceTree = "<group>"; };
+		CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeTests.swift; sourceTree = "<group>"; };
+		CBE8EBB525AA04A6000B9F2A /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		CBE8EBB925AA0A88000B9F2A /* GameVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				CB0069BC259DC3E1008DD9F8 /* Board.swift */,
+				CBE8EBB925AA0A88000B9F2A /* GameVariant.swift */,
 				CB1DB09025A38375004C92AE /* PiecesArrangement */,
 				CB1DB0A325A385B0004C92AE /* Creator */,
 			);
@@ -150,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				CB0069B8259DC39E008DD9F8 /* Game.swift */,
+				CBE8EBB525AA04A6000B9F2A /* GameState.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -220,6 +228,7 @@
 				CB1DB0A825A38772004C92AE /* LionTests.swift */,
 				CBA6B93E25A3899000B33E60 /* ChickTests.swift */,
 				CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */,
+				CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -342,12 +351,14 @@
 				CB2E100825A2126400AA1A9F /* BoardCretor.swift in Sources */,
 				CB23CB5525A0CCCE00C35A41 /* GoroGoroPiecesArrangement.swift in Sources */,
 				CB0069D9259E0ABB008DD9F8 /* Dog.swift in Sources */,
+				CBE8EBB625AA04A6000B9F2A /* GameState.swift in Sources */,
 				CB2E0FFE25A0D2C800AA1A9F /* Cat.swift in Sources */,
 				CB0069C1259DC701008DD9F8 /* Player.swift in Sources */,
 				CB0069B9259DC39E008DD9F8 /* Game.swift in Sources */,
 				CB2E0FF225A0D0B400AA1A9F /* Giraffe.swift in Sources */,
 				CB0069D5259DFE81008DD9F8 /* Lion.swift in Sources */,
 				CB23CB4D25A0C23B00C35A41 /* DobutsuPiecesArrangement.swift in Sources */,
+				CBE8EBBA25AA0A88000B9F2A /* GameVariant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,6 +372,7 @@
 				CB1DB0A925A38772004C92AE /* LionTests.swift in Sources */,
 				CB0069D1259DCA2C008DD9F8 /* BoardTests.swift in Sources */,
 				CB23CB5B25A0CE4400C35A41 /* DobutsuBoardCreatorTests.swift in Sources */,
+				CBAF5D5225A6140700D53C76 /* GiraffeTests.swift in Sources */,
 				CB0069B5259DC376008DD9F8 /* GameTests.swift in Sources */,
 				CB23CB6625A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift in Sources */,
 			);
