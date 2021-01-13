@@ -7,6 +7,4 @@ public enum GameState {
     case finished(winner: PlayerType)
 }
 
-extension GameState: Equatable {
-    
-}
+extension GameState: Equatable {}

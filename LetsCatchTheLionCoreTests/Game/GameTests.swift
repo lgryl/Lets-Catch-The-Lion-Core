@@ -138,7 +138,7 @@ class GameTests: XCTestCase {
     }
 
     func test_afterCapturingPiece_pieceChangesOwner() throws {
-        let board = Board(width: 3, height: 4)
+        let board = Board(width: 3, height: 4, playerAreaHeight: 1)
         board.place(Chick(owner: .player2), at: Point(x: 1, y: 1))
         board.place(Chick(owner: .player1), at: Point(x: 1, y: 2))
         tested = Game(board: board)
@@ -188,7 +188,7 @@ class GameTests: XCTestCase {
     }
 
     func test_whenPlayers2LionIsCaptured_player1Wins() throws {
-        let board = Board(width: 3, height: 4)
+        let board = Board(width: 3, height: 4, playerAreaHeight: 1)
         board.place(Lion(owner: .player2), at: Point(x: 1, y: 1))
         board.place(Lion(owner: .player1), at: Point(x: 1, y: 2))
         tested = Game(board: board)
@@ -202,7 +202,7 @@ class GameTests: XCTestCase {
     }
 
     func test_whenPlayers1LionIsCaptured_player2Wins() throws {
-        let board = Board(width: 3, height: 4)
+        let board = Board(width: 3, height: 4, playerAreaHeight: 1)
         board.place(Lion(owner: .player2), at: Point(x: 1, y: 1))
         board.place(Lion(owner: .player1), at: Point(x: 1, y: 2))
         tested = Game(board: board)
@@ -217,7 +217,7 @@ class GameTests: XCTestCase {
     }
 
     func test_moveAfterVictory_throwsException() throws {
-        let board = Board(width: 3, height: 4)
+        let board = Board(width: 3, height: 4, playerAreaHeight: 1)
         board.place(Chick(owner: .player2), at: Point(x: 1, y: 0))
         board.place(Lion(owner: .player2), at: Point(x: 1, y: 1))
         board.place(Lion(owner: .player1), at: Point(x: 1, y: 2))
@@ -225,5 +225,66 @@ class GameTests: XCTestCase {
 
         try tested.move(from: Point(x: 1, y: 2), to: Point(x: 1, y: 1))
         XCTAssertThrowsError(try tested.move(from: Point(x: 1, y: 0), to: Point(x: 1, y: 1)))
+    }
+
+    func test_afterReachingOpponentsArea_player1Wins() {
+        let board = Board(width: 3, height: 4, playerAreaHeight: 1)
+        board.place(Lion(owner: .player2), at: Point(x: 2, y: 2))
+        board.place(Lion(owner: .player1), at: Point(x: 0, y: 1))
+        tested = Game(board: board)
+        do {
+            try tested.move(from: Point(x: 0, y: 1), to: Point(x: 0, y: 0))
+            guard case let .finished(winner) = tested.state else {
+                XCTFail()
+                return
+            }
+            guard winner == .player1 else {
+                XCTFail()
+                return
+            }
+        } catch {
+            XCTFail()
+        }
+    }
+
+    func test_afterReachingOpponentsAreaWhenPlayer2CanCaptureLion_gameContinues() {
+        let board = Board(width: 3, height: 4, playerAreaHeight: 1)
+        tested = Game(board: board)
+        tested.place(Lion(owner: .player2), at: Point(x: 1, y: 0))
+        tested.place(Lion(owner: .player1), at: Point(x: 0, y: 1))
+        do {
+            try tested.move(from: Point(x: 0, y: 1), to: Point(x: 0, y: 0))
+            guard case let .ongoing(currentPlayer) = tested.state else {
+                XCTFail()
+                return
+            }
+            guard currentPlayer == .player2 else {
+                XCTFail()
+                return
+            }
+        } catch {
+            XCTFail()
+        }
+    }
+
+    func test_afterReachingOpponentsAreaWhenPlayer1CanCaptureLion_gameContinues() {
+        let board = Board(width: 3, height: 4, playerAreaHeight: 1)
+        tested = Game(board: board)
+        tested.place(Lion(owner: .player2), at: Point(x: 2, y: 2))
+        tested.place(Lion(owner: .player1), at: Point(x: 1, y: 2))
+        do {
+            try tested.move(from: Point(x: 1, y: 2), to: Point(x: 1, y: 3))
+            try tested.move(from: Point(x: 2, y: 2), to: Point(x: 2, y: 3))
+            guard case let .ongoing(currentPlayer) = tested.state else {
+                XCTFail()
+                return
+            }
+            guard currentPlayer == .player1 else {
+                XCTFail()
+                return
+            }
+        } catch {
+            XCTFail()
+        }
     }
 }

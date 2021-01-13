@@ -8,7 +8,7 @@ class BoardTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        tested = Board(width: 3, height: 4)
+        tested = Board(width: 3, height: 4, playerAreaHeight: 1)
     }
 
     override func tearDown() {
@@ -17,7 +17,7 @@ class BoardTests: XCTestCase {
     }
 
     func test_arbitraryBoard_hasPassedSize() throws {
-        tested = Board(width: 7, height: 5)
+        tested = Board(width: 7, height: 5, playerAreaHeight: 1)
         assertBoard(tested, hasWidth: 7, andHeight: 5)
     }
 
@@ -35,7 +35,7 @@ class BoardTests: XCTestCase {
     }
 
     func test_placingPieceOutsideTheBoard_hasNoEffect() {
-        tested = Board(width: 5, height: 5)
+        tested = Board(width: 5, height: 5, playerAreaHeight: 1)
         tested.place(Lion(owner: .player1), at: Point(x: 6, y: 6))
         XCTAssertNil(tested.pieceAt(Point(x: 6, y: 6)))
     }

@@ -4,6 +4,7 @@ import Foundation
 
 internal class Board {
     private var pieces: [[Piece?]]
+    private let playerAreaHeight: Int
 
     public var width: Int {
         pieces.count
@@ -13,8 +14,9 @@ internal class Board {
         pieces[0].count
     }
 
-    public init(width: Int, height: Int) {
+    public init(width: Int, height: Int, playerAreaHeight: Int) {
         pieces = Array(repeating: Array(repeating: nil, count: height), count: width)
+        self.playerAreaHeight = playerAreaHeight
     }
 
     public func pieceAt(_ point: Point) -> Piece? {
@@ -59,6 +61,26 @@ internal class Board {
         }
         removePieceAt(startPoint)
         return place(piece, at: endPoint)
+    }
+
+    func position(of piece: Piece) -> Point? {
+        for x in 0 ..< pieces.count {
+            for y in 0 ..< pieces[0].count {
+                if piece === pieces[x][y] {
+                    return Point(x: x, y: y)
+                }
+            }
+        }
+        return nil
+    }
+
+    func point(_ point: Point, withinPlayerArea player: PlayerType) -> Bool {
+        switch player {
+        case .player1:
+            return point.y > height - 1 - playerAreaHeight
+        case .player2:
+            return point.y < playerAreaHeight
+        }
     }
 
     public enum Error: Swift.Error {

@@ -23,12 +23,12 @@ class GoroGoroBoardCreatorTests: XCTestCase {
     }
 
     func test_goroGoroBoard_is5x6() {
-        let board = tested.createBoard(from: GoroGoroPiecesArrangement())
+        let board = tested.createBoard(from: BoardConfigurationFactory.configuration(for: .goroGoro))
         assertBoard(board, hasWidth: 5, andHeight: 6)
     }
 
     func test_dobutsuBoard_hasCorrectSetup() {
-        let board = tested.createBoard(from: GoroGoroPiecesArrangement())
+        let board = tested.createBoard(from: BoardConfigurationFactory.configuration(for: .goroGoro))
 
         XCTAssertTrue(board.pieceAt(Point(x: 0, y: 0)) is Cat)
         XCTAssertTrue(board.pieceAt(Point(x: 1, y: 0)) is Dog)

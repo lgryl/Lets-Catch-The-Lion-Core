@@ -6,11 +6,13 @@ internal struct BoardCreator {
     let player1: Player
     let player2: Player
 
-    func createBoard(from piecesArrangement: PiecesArrangement) -> Board {
-        let board = Board(width: piecesArrangement.width, height: piecesArrangement.height)
-        for x in 0 ..< piecesArrangement.width {
-            for y in 0 ..< piecesArrangement.height {
-                if let piece = piecesArrangement.pieceAt(x: x, y: y) {
+    func createBoard(from configuration: BoardConfiguration) -> Board {
+        let board = Board(width: configuration.piecesArrangement.width,
+                          height: configuration.piecesArrangement.height,
+                          playerAreaHeight: configuration.playerAreaHeight)
+        for x in 0 ..< configuration.piecesArrangement.width {
+            for y in 0 ..< configuration.piecesArrangement.height {
+                if let piece = configuration.piecesArrangement.pieceAt(x: x, y: y) {
                     switch piece.owner {
                     case .player1:
                         player1.pieces.append(piece)

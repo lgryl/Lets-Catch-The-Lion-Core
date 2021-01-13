@@ -19,14 +19,34 @@ public class Game {
         let configuration = BoardConfigurationFactory.configuration(for: gameVariant)
 
         let boardCreator = BoardCreator(player1: player1, player2: player2)
-        board = boardCreator.createBoard(from: configuration.piecesArrangement)
+        board = boardCreator.createBoard(from: configuration)
     }
 
     internal init(board: Board) {
         self.board = board
     }
 
-    public func move(from startPoint: Point, to endPoint: Point) throws {
+    internal func place(_ piece: Piece, at position: Point) {
+        player(of: piece.owner).pieces.append(piece)
+        board.place(piece, at: position)
+    }
+
+    @discardableResult
+    private func canMove(from startPoint: Point, to endPoint: Point) -> Bool {
+        guard let pieceToMove = board.pieceAt(startPoint) else {
+            return false
+        }
+        guard board.pieceAt(endPoint) == nil || board.pieceAt(endPoint)?.owner != pieceToMove.owner else {
+            return false
+        }
+        guard pieceToMove.allowsMove(from: startPoint, to: endPoint) else {
+            return false
+        }
+        return true
+    }
+
+    public func move(from startPoint: Point, to endPoint: Point)
+    throws {
         guard case let GameState.ongoing(currentPlayer) = state else {
             throw Error.gameAlreadyFinished
         }
@@ -45,7 +65,8 @@ public class Game {
         do {
             let capturedPiece = try board.movePiece(from: startPoint, to: endPoint)
             numberOfMoves += 1
-            if let winner = checkForWinner(lastCapturedPiece: capturedPiece) {
+            if let winner = checkForWinner(lastMovedPiece: pieceToMove,
+                                           lastCapturedPiece: capturedPiece) {
                 state = .finished(winner: winner)
                 return
             }
@@ -61,11 +82,36 @@ public class Game {
         }
     }
 
-    private func checkForWinner(lastCapturedPiece: Piece?) -> PlayerType? {
+    private func checkForWinner(lastMovedPiece: Piece, lastCapturedPiece: Piece?) -> PlayerType? {
         if lastCapturedPiece is Lion {
             return lastCapturedPiece?.owner.next
         }
+        guard let movedPiecePosition = board.position(of: lastMovedPiece) else {
+            fatalError("Moved error should be on the board")
+        }
+        if board.point(movedPiecePosition, withinPlayerArea: lastMovedPiece.owner.next) {
+            if lastMovedPiece is Lion {
+                return canPieceBeCapturedInNextTurn(lastMovedPiece) ? nil : lastMovedPiece.owner
+            }
+            return lastMovedPiece.owner
+        }
+
         return nil
+    }
+
+    private func canPieceBeCapturedInNextTurn(_ piece: Piece) -> Bool {
+        guard let piecePosition = board.position(of: piece) else {
+            fatalError("Piece should be on the board")
+        }
+        for opponentPiece in player(of: piece.owner.next).pieces {
+            guard let opponentPiecePosition = board.position(of: opponentPiece) else {
+                fatalError("Piece should be on the board")
+            }
+            if canMove(from: opponentPiecePosition, to: piecePosition) {
+                return true
+            }
+        }
+        return false
     }
 
     private func startNextPlayerTurn() {
@@ -73,7 +119,6 @@ public class Game {
             preconditionFailure("Invalid game state")
         }
         state = .ongoing(currentPlayer: currentPlayer.next)
-
     }
 
     private func player(of type: PlayerType) -> Player {
