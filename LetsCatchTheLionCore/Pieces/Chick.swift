@@ -3,7 +3,7 @@
 import Foundation
 
 class Chick: GeneralPiece {
-    override func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool {
-        endPoint.y - startPoint.y == (defaultOrientation ? -1 : 1)
+    override func allowsMove(from startPosition: Position, to endPosition: Position) -> Bool {
+        endPosition.y - startPosition.y == (defaultOrientation ? -1 : 1)
     }
 }

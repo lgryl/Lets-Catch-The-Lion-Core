@@ -20,35 +20,35 @@ class ChickTests: XCTestCase {
     }
 
     func test_chick_cantStayInTheSameSquare() {
-        XCTAssertFalse(tested1.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 4)))
-        XCTAssertFalse(tested2.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 4)))
+        XCTAssertFalse(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 4)))
+        XCTAssertFalse(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 4)))
     }
 
     func test_player1Chick_canMoveUp() {
-        XCTAssertTrue(tested1.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 3)))
+        XCTAssertTrue(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 3)))
     }
 
     func test_player1Chich_cantMove2SquaresUp() {
-        XCTAssertFalse(tested1.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 2)))
+        XCTAssertFalse(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 2)))
     }
 
     func test_player1Chick_cantMoveDown() {
-        XCTAssertFalse(tested1.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 5)))
+        XCTAssertFalse(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 5)))
     }
 
     func test_player2Chick_canMoveDown() {
-        XCTAssertTrue(tested2.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 5)))
+        XCTAssertTrue(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 5)))
     }
 
     func test_player2Chick_cantMoveTwoSquaresDown() {
-        XCTAssertFalse(tested2.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 6)))
+        XCTAssertFalse(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 6)))
     }
 
     func test_player2Chick_cantMoveUp() {
-        XCTAssertFalse(tested2.allowsMove(from: Point(x: 4, y: 4), to: Point(x: 4, y: 3)))
+        XCTAssertFalse(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 3)))
     }
 
     func test_chich_canMoveToPositionWithNegativeCoordinates() {
-        XCTAssertTrue(tested1.allowsMove(from: Point(x: 0, y: 0), to: Point(x: 0, y: -1)))
+        XCTAssertTrue(tested1.allowsMove(from: Position(x: 0, y: 0), to: Position(x: 0, y: -1)))
     }
 }

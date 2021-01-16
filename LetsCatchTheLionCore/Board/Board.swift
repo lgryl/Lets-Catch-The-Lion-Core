@@ -19,74 +19,74 @@ internal class Board {
         self.playerAreaHeight = playerAreaHeight
     }
 
-    public func pieceAt(_ point: Point) -> Piece? {
-        guard pointWithinBoard(point) else {
+    public func pieceAt(_ position: Position) -> Piece? {
+        guard positionWithinBoard(position) else {
             return nil
         }
-        return pieces[point.x][point.y]
+        return pieces[position.x][position.y]
     }
 
     @discardableResult
-    public func place(_ piece: Piece, at point: Point) -> Piece? {
-        guard pointWithinBoard(point) else { return nil }
+    public func place(_ piece: Piece, at position: Position) -> Piece? {
+        guard positionWithinBoard(position) else { return nil }
 
-        let previousPiece = pieceAt(point)
-        pieces[point.x][point.y] = piece
+        let previousPiece = pieceAt(position)
+        pieces[position.x][position.y] = piece
         return previousPiece
     }
 
     @discardableResult
-    internal func removePieceAt(_ point: Point) -> Piece? {
-        guard pointWithinBoard(point) else { return nil }
-        let piece = pieceAt(point)
-        pieces[point.x][point.y] = nil
+    internal func removePieceAt(_ position: Position) -> Piece? {
+        guard positionWithinBoard(position) else { return nil }
+        let piece = pieceAt(position)
+        pieces[position.x][position.y] = nil
         return piece
     }
 
-    private func pointWithinBoard(_ point: Point) -> Bool {
-        point.x >= 0 && point.x < width && point.y >= 0 && point.y < height
+    private func positionWithinBoard(_ position: Position) -> Bool {
+        position.x >= 0 && position.x < width && position.y >= 0 && position.y < height
     }
 
     @discardableResult
-    public func movePiece(from startPoint: Point, to endPoint: Point) throws -> Piece? {
-        guard pointWithinBoard(startPoint),
-              pointWithinBoard(endPoint) else {
-            throw Error.pointOutsideBoard
+    public func movePiece(from startPosition: Position, to endPosition: Position) throws -> Piece? {
+        guard positionWithinBoard(startPosition),
+              positionWithinBoard(endPosition) else {
+            throw Error.positionOutsideBoard
         }
-        guard let piece = pieceAt(startPoint) else {
+        guard let piece = pieceAt(startPosition) else {
             throw Error.pieceNotFound
         }
-        guard startPoint != endPoint else {
+        guard startPosition != endPosition else {
             throw Error.invalidMove
         }
-        removePieceAt(startPoint)
-        return place(piece, at: endPoint)
+        removePieceAt(startPosition)
+        return place(piece, at: endPosition)
     }
 
-    func position(of piece: Piece) -> Point? {
+    func position(of piece: Piece) -> Position? {
         for x in 0 ..< pieces.count {
             for y in 0 ..< pieces[0].count {
                 if piece === pieces[x][y] {
-                    return Point(x: x, y: y)
+                    return Position(x: x, y: y)
                 }
             }
         }
         return nil
     }
 
-    func point(_ point: Point, withinPlayerArea player: PlayerType) -> Bool {
+    func position(_ position: Position, withinPlayerArea player: PlayerType) -> Bool {
         switch player {
         case .player1:
-            return point.y > height - 1 - playerAreaHeight
+            return position.y > height - 1 - playerAreaHeight
         case .player2:
-            return point.y < playerAreaHeight
+            return position.y < playerAreaHeight
         }
     }
 
     public enum Error: Swift.Error {
         case invalidMove
         case pieceNotFound
-        case pointOutsideBoard
+        case positionOutsideBoard
     }
 }
 
@@ -95,9 +95,9 @@ fileprivate struct BoardVariant {
     var height: Int
 }
 
-public struct Point {
+public struct Position {
     var x: Int
     var y: Int
 }
 
-extension Point: Equatable {}
+extension Position: Equatable {}

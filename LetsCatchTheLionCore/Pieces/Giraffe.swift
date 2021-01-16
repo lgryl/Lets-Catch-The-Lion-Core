@@ -3,7 +3,7 @@
 import Foundation
 
 class Giraffe: GeneralPiece {
-    override func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool {
-        (startPoint.x == endPoint.x && startPoint.y != endPoint.y) || (startPoint.x != endPoint.x && startPoint.y == endPoint.y)
+    override func allowsMove(from startPosition: Position, to endPosition: Position) -> Bool {
+        (startPosition.x == endPosition.x && startPosition.y != endPosition.y) || (startPosition.x != endPosition.x && startPosition.y == endPosition.y)
     }
 }

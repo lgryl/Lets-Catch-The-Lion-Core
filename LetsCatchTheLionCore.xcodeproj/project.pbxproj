@@ -33,6 +33,7 @@
 		CBA6B93F25A3899000B33E60 /* ChickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B93E25A3899000B33E60 /* ChickTests.swift */; };
 		CBA6B94525A4BB3900B33E60 /* ElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */; };
 		CBAF5D5225A6140700D53C76 /* GiraffeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */; };
+		CBE526BF25AF5D4300CC0D9E /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526BE25AF5D4300CC0D9E /* GameError.swift */; };
 		CBE8EBB625AA04A6000B9F2A /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8EBB525AA04A6000B9F2A /* GameState.swift */; };
 		CBE8EBBA25AA0A88000B9F2A /* GameVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8EBB925AA0A88000B9F2A /* GameVariant.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +78,7 @@
 		CBA6B93E25A3899000B33E60 /* ChickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickTests.swift; sourceTree = "<group>"; };
 		CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantTests.swift; sourceTree = "<group>"; };
 		CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeTests.swift; sourceTree = "<group>"; };
+		CBE526BE25AF5D4300CC0D9E /* GameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameError.swift; sourceTree = "<group>"; };
 		CBE8EBB525AA04A6000B9F2A /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		CBE8EBB925AA0A88000B9F2A /* GameVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -158,6 +160,7 @@
 			children = (
 				CB0069B8259DC39E008DD9F8 /* Game.swift */,
 				CBE8EBB525AA04A6000B9F2A /* GameState.swift */,
+				CBE526BE25AF5D4300CC0D9E /* GameError.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE526BF25AF5D4300CC0D9E /* GameError.swift in Sources */,
 				CB2E0FFA25A0D17200AA1A9F /* Chick.swift in Sources */,
 				CB0069DD259E0C18008DD9F8 /* PiecesArrangement.swift in Sources */,
 				CB0069C5259DC73C008DD9F8 /* Piece.swift in Sources */,

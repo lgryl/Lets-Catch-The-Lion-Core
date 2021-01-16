@@ -4,11 +4,11 @@ import Foundation
 
 public protocol Piece: AnyObject {
     var owner: PlayerType { get set }
-    func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool
+    func allowsMove(from startPosition: Position, to endPosition: Position) -> Bool
 }
 
 public class GeneralPiece: Piece {
-    public func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool {
+    public func allowsMove(from startPosition: Position, to endPosition: Position) -> Bool {
         false
     }
 

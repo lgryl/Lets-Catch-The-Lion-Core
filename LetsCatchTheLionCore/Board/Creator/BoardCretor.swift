@@ -19,7 +19,7 @@ internal struct BoardCreator {
                     case .player2:
                         player2.pieces.append(piece)
                     }
-                    board.place(piece, at: Point(x: x, y: y))
+                    board.place(piece, at: Position(x: x, y: y))
                 }
             }
         }

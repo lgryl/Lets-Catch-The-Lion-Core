@@ -3,8 +3,8 @@
 import Foundation
 
 class Elephant: GeneralPiece {
-    override func allowsMove(from startPoint: Point, to endPoint: Point) -> Bool {
-        guard startPoint != endPoint else { return false }
-        return abs(endPoint.x - startPoint.x) == abs(endPoint.y - startPoint.y)
+    override func allowsMove(from startPosition: Position, to endPosition: Position) -> Bool {
+        guard startPosition != endPosition else { return false }
+        return abs(endPosition.x - startPosition.x) == abs(endPosition.y - startPosition.y)
     }
 }

@@ -4,10 +4,10 @@ import Foundation
 
 public class Game {
     let board: Board
-    let player1 = Player()
-    let player2 = Player()
+    private let player1 = Player()
+    private let player2 = Player()
+    
     private(set) public var numberOfMoves = 0
-
     private(set) public var state: GameState = .ongoing(currentPlayer: .player1)
 
     public var currentPlayer: PlayerType? {
@@ -26,60 +26,56 @@ public class Game {
         self.board = board
     }
 
-    internal func place(_ piece: Piece, at position: Point) {
+    internal func place(_ piece: Piece, at position: Position) {
         player(of: piece.owner).pieces.append(piece)
         board.place(piece, at: position)
     }
 
     @discardableResult
-    private func canMove(from startPoint: Point, to endPoint: Point) -> Bool {
-        guard let pieceToMove = board.pieceAt(startPoint) else {
+    private func canMove(from startPosition: Position, to endPosition: Position) -> Bool {
+        guard let pieceToMove = board.pieceAt(startPosition) else {
             return false
         }
-        guard board.pieceAt(endPoint) == nil || board.pieceAt(endPoint)?.owner != pieceToMove.owner else {
+        guard board.pieceAt(endPosition) == nil || board.pieceAt(endPosition)?.owner != pieceToMove.owner else {
             return false
         }
-        guard pieceToMove.allowsMove(from: startPoint, to: endPoint) else {
+        guard pieceToMove.allowsMove(from: startPosition, to: endPosition) else {
             return false
         }
         return true
     }
 
-    public func move(from startPoint: Point, to endPoint: Point)
+    public func move(from startPosition: Position, to endPosition: Position)
     throws {
         guard case let GameState.ongoing(currentPlayer) = state else {
-            throw Error.gameAlreadyFinished
+            throw GameError.gameAlreadyFinished
         }
-        guard let pieceToMove = board.pieceAt(startPoint) else {
-            throw Error.pieceNotFound
+        guard let pieceToMove = board.pieceAt(startPosition) else {
+            throw GameError.pieceNotFound
         }
         guard pieceToMove.owner == currentPlayer else {
-            throw Error.playOrderViolation
+            throw GameError.playOrderViolation
         }
-        guard board.pieceAt(endPoint) == nil || board.pieceAt(endPoint)?.owner != currentPlayer else {
-            throw Error.capturingOwnPiece
+        guard board.pieceAt(endPosition) == nil || board.pieceAt(endPosition)?.owner != currentPlayer else {
+            throw GameError.capturingOwnPiece
         }
-        guard pieceToMove.allowsMove(from: startPoint, to: endPoint) else {
-            throw Error.illegalMove
+        guard pieceToMove.allowsMove(from: startPosition, to: endPosition) else {
+            throw GameError.illegalMove
         }
-        do {
-            let capturedPiece = try board.movePiece(from: startPoint, to: endPoint)
-            numberOfMoves += 1
-            if let winner = checkForWinner(lastMovedPiece: pieceToMove,
-                                           lastCapturedPiece: capturedPiece) {
-                state = .finished(winner: winner)
-                return
-            }
+        let capturedPiece = try board.movePiece(from: startPosition, to: endPosition)
+        numberOfMoves += 1
+        if let winner = checkForWinner(lastMovedPiece: pieceToMove,
+                                       lastCapturedPiece: capturedPiece) {
+            state = .finished(winner: winner)
+            return
+        }
 
-            if let capturedPiece = capturedPiece {
-                capturedPiece.owner = capturedPiece.owner.next
-                player(of: currentPlayer).capturedPieces.append(capturedPiece)
-                player(of: currentPlayer.next).pieces.removeAll { $0 === capturedPiece }
-            }
-            startNextPlayerTurn()
-        } catch {
-            throw error
+        if let capturedPiece = capturedPiece {
+            capturedPiece.owner = capturedPiece.owner.next
+            player(of: currentPlayer).capturedPieces.append(capturedPiece)
+            player(of: currentPlayer.next).pieces.removeAll { $0 === capturedPiece }
         }
+        startNextPlayerTurn()
     }
 
     private func checkForWinner(lastMovedPiece: Piece, lastCapturedPiece: Piece?) -> PlayerType? {
@@ -89,7 +85,7 @@ public class Game {
         guard let movedPiecePosition = board.position(of: lastMovedPiece) else {
             fatalError("Moved error should be on the board")
         }
-        if board.point(movedPiecePosition, withinPlayerArea: lastMovedPiece.owner.next) {
+        if board.position(movedPiecePosition, withinPlayerArea: lastMovedPiece.owner.next) {
             if lastMovedPiece is Lion {
                 return canPieceBeCapturedInNextTurn(lastMovedPiece) ? nil : lastMovedPiece.owner
             }
@@ -130,11 +126,11 @@ public class Game {
         }
     }
 
-    enum Error: Swift.Error {
-        case pieceNotFound
-        case playOrderViolation
-        case capturingOwnPiece
-        case illegalMove
-        case gameAlreadyFinished
+    public func pieces(of playerType: PlayerType) -> [Piece] {
+        player(of: playerType).pieces
+    }
+
+    public func capturedPieces(of playerType: PlayerType) -> [Piece] {
+        player(of: playerType).capturedPieces
     }
 }
