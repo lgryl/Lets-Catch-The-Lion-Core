@@ -45,12 +45,18 @@ public class Game {
         return true
     }
 
-    public func move(from startPosition: Position, to endPosition: Position)
-    throws {
+    public func move(from startPosition: Position, to endPosition: Position) throws {
+        guard let piece = board.pieceAt(startPosition) else {
+            throw GameError.pieceNotFound
+        }
+        try move(piece, to: endPosition)
+    }
+
+    public func move(_ pieceToMove: Piece, to endPosition: Position) throws {
         guard case let GameState.ongoing(currentPlayer) = state else {
             throw GameError.gameAlreadyFinished
         }
-        guard let pieceToMove = board.pieceAt(startPosition) else {
+        guard let startPosition = board.position(of: pieceToMove) else {
             throw GameError.pieceNotFound
         }
         guard pieceToMove.owner == currentPlayer else {

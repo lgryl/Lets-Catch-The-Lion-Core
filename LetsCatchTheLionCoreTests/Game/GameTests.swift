@@ -66,7 +66,7 @@ class GameTests: XCTestCase {
             XCTFail()
             return
         }
-        _ = try? tested.move(from: Position(x: 1, y: 2), to: Position(x: 1, y: 2))
+        _ = try? tested.move(piece, to: Position(x: 1, y: 2))
         XCTAssertTrue(tested.currentPlayer == .player1)
     }
 
@@ -77,7 +77,7 @@ class GameTests: XCTestCase {
             XCTFail()
             return
         }
-        _ = try? tested.move(from: Position(x: 2, y: 3), to: Position(x: 2, y: 2))
+        _ = try? tested.move(piece, to: Position(x: 2, y: 2))
         XCTAssertTrue(tested.currentPlayer == .player2)
     }
 
@@ -89,7 +89,7 @@ class GameTests: XCTestCase {
             return
         }
         XCTAssertEqual(.player1, piece1.owner)
-        _ = try? tested.move(from: Position(x: 2, y: 3), to: Position(x: 2, y: 2))
+        _ = try? tested.move(piece1, to: Position(x: 2, y: 2))
         XCTAssertTrue(tested.currentPlayer == .player2)
 
         guard let piece2 = tested.board.pieceAt(Position(x: 0, y: 0)),
@@ -98,7 +98,7 @@ class GameTests: XCTestCase {
             return
         }
         XCTAssertEqual(.player2, piece2.owner)
-        _ = try? tested.move(from: Position(x: 0, y: 0), to: Position(x: 0, y: 1))
+        _ = try? tested.move(piece2, to: Position(x: 0, y: 1))
         XCTAssertTrue(tested.currentPlayer == .player1)
     }
 
@@ -110,7 +110,7 @@ class GameTests: XCTestCase {
             return
         }
         XCTAssertEqual(.player2, piece.owner)
-        XCTAssertThrowsError(try tested.move(from: Position(x: 0, y: 0), to: Position(x: 0, y: 1)))
+        XCTAssertThrowsError(try tested.move(piece, to: Position(x: 0, y: 1)))
     }
 
     func test_afterMovingPieceOfNonCurrentPlayer_turnDoesntChange() {
@@ -187,11 +187,13 @@ class GameTests: XCTestCase {
 
     func test_whenPlayers2LionIsCaptured_player1Wins() throws {
         let board = Board(width: 3, height: 4, playerAreaHeight: 1)
-        board.place(Lion(owner: .player2), at: Position(x: 1, y: 1))
-        board.place(Lion(owner: .player1), at: Position(x: 1, y: 2))
+        let lion1 = Lion(owner: .player1)
+        board.place(lion1, at: Position(x: 1, y: 2))
+        let lion2 = Lion(owner: .player2)
+        board.place(lion2, at: Position(x: 1, y: 1))
         tested = Game(board: board)
 
-        try tested.move(from: Position(x: 1, y: 2), to: Position(x: 1, y: 1))
+        try tested.move(lion1, to: Position(x: 1, y: 1))
         if case let GameState.finished(winner) = tested.state {
             XCTAssertEqual(.player1, winner)
         } else {
@@ -201,12 +203,14 @@ class GameTests: XCTestCase {
 
     func test_whenPlayers1LionIsCaptured_player2Wins() throws {
         let board = Board(width: 3, height: 4, playerAreaHeight: 1)
-        board.place(Lion(owner: .player2), at: Position(x: 1, y: 1))
-        board.place(Lion(owner: .player1), at: Position(x: 1, y: 2))
+        let lion1 = Lion(owner: .player1)
+        board.place(lion1, at: Position(x: 1, y: 2))
+        let lion2 = Lion(owner: .player2)
+        board.place(lion2, at: Position(x: 1, y: 1))
         tested = Game(board: board)
 
-        try tested.move(from: Position(x: 1, y: 2), to: Position(x: 2, y: 2))
-        try tested.move(from: Position(x: 1, y: 1), to: Position(x: 2, y: 2))
+        try tested.move(lion1, to: Position(x: 2, y: 2))
+        try tested.move(lion2, to: Position(x: 2, y: 2))
         if case let GameState.finished(winner) = tested.state {
             XCTAssertEqual(.player2, winner)
         } else {
@@ -216,22 +220,27 @@ class GameTests: XCTestCase {
 
     func test_moveAfterVictory_throwsException() throws {
         let board = Board(width: 3, height: 4, playerAreaHeight: 1)
-        board.place(Chick(owner: .player2), at: Position(x: 1, y: 0))
-        board.place(Lion(owner: .player2), at: Position(x: 1, y: 1))
-        board.place(Lion(owner: .player1), at: Position(x: 1, y: 2))
+        let lion1 = Lion(owner: .player1)
+        board.place(lion1, at: Position(x: 1, y: 2))
+        let chick2 = Chick(owner: .player2)
+        board.place(chick2, at: Position(x: 1, y: 0))
+        let lion2 = Lion(owner: .player2)
+        board.place(lion2, at: Position(x: 1, y: 1))
         tested = Game(board: board)
 
-        try tested.move(from: Position(x: 1, y: 2), to: Position(x: 1, y: 1))
-        XCTAssertThrowsError(try tested.move(from: Position(x: 1, y: 0), to: Position(x: 1, y: 1)))
+        try tested.move(lion1, to: Position(x: 1, y: 1))
+        XCTAssertThrowsError(try tested.move(chick2, to: Position(x: 1, y: 1)))
     }
 
     func test_afterReachingOpponentsArea_player1Wins() {
         let board = Board(width: 3, height: 4, playerAreaHeight: 1)
-        board.place(Lion(owner: .player2), at: Position(x: 2, y: 2))
-        board.place(Lion(owner: .player1), at: Position(x: 0, y: 1))
+        let lion1 = Lion(owner: .player1)
+        board.place(lion1, at: Position(x: 0, y: 1))
+        let lion2 = Lion(owner: .player2)
+        board.place(lion2, at: Position(x: 2, y: 2))
         tested = Game(board: board)
         do {
-            try tested.move(from: Position(x: 0, y: 1), to: Position(x: 0, y: 0))
+            try tested.move(lion1, to: Position(x: 0, y: 0))
             guard case let .finished(winner) = tested.state else {
                 XCTFail()
                 return
@@ -248,10 +257,12 @@ class GameTests: XCTestCase {
     func test_afterReachingOpponentsAreaWhenPlayer2CanCaptureLion_gameContinues() {
         let board = Board(width: 3, height: 4, playerAreaHeight: 1)
         tested = Game(board: board)
-        tested.place(Lion(owner: .player2), at: Position(x: 1, y: 0))
-        tested.place(Lion(owner: .player1), at: Position(x: 0, y: 1))
+        let lion1 = Lion(owner: .player1)
+        tested.place(lion1, at: Position(x: 0, y: 1))
+        let lion2 = Lion(owner: .player2)
+        tested.place(lion2, at: Position(x: 1, y: 0))
         do {
-            try tested.move(from: Position(x: 0, y: 1), to: Position(x: 0, y: 0))
+            try tested.move(lion1, to: Position(x: 0, y: 0))
             guard case let .ongoing(currentPlayer) = tested.state else {
                 XCTFail()
                 return
@@ -268,11 +279,13 @@ class GameTests: XCTestCase {
     func test_afterReachingOpponentsAreaWhenPlayer1CanCaptureLion_gameContinues() {
         let board = Board(width: 3, height: 4, playerAreaHeight: 1)
         tested = Game(board: board)
-        tested.place(Lion(owner: .player2), at: Position(x: 2, y: 2))
-        tested.place(Lion(owner: .player1), at: Position(x: 1, y: 2))
+        let lion1 = Lion(owner: .player1)
+        tested.place(lion1, at: Position(x: 1, y: 2))
+        let lion2 = Lion(owner: .player2)
+        tested.place(lion2, at: Position(x: 2, y: 2))
         do {
-            try tested.move(from: Position(x: 1, y: 2), to: Position(x: 1, y: 3))
-            try tested.move(from: Position(x: 2, y: 2), to: Position(x: 2, y: 3))
+            try tested.move(lion1, to: Position(x: 1, y: 3))
+            try tested.move(lion2, to: Position(x: 2, y: 3))
             guard case let .ongoing(currentPlayer) = tested.state else {
                 XCTFail()
                 return
