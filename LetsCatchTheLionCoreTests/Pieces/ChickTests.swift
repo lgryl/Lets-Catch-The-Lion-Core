@@ -4,13 +4,13 @@ import XCTest
 @testable import LetsCatchTheLionCore
 
 class ChickTests: XCTestCase {
-    var tested1: Chick!
-    var tested2: Chick!
+    var tested1: Piece!
+    var tested2: Piece!
 
     override func setUp()  {
         super.setUp()
-        tested1 = Chick(owner: .player1)
-        tested2 = Chick(owner: .player2)
+        tested1 = Piece(.chick, owner: .player1)
+        tested2 = Piece(.chick, owner: .player2)
     }
 
     override func tearDown() {

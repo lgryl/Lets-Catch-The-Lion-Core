@@ -2,38 +2,30 @@
 
 import Foundation
 
-public protocol Piece: AnyObject {
-    var owner: PlayerType { get set }
-    func allowsMove(from startPosition: Position, to endPosition: Position) -> Bool
-}
+public class Piece {
+    private(set) var type: PieceType
+    var owner: PlayerType
 
-public class GeneralPiece: Piece {
-    public func allowsMove(from startPosition: Position, to endPosition: Position) -> Bool {
-        false
-    }
-
-    public var owner: PlayerType
-    init(owner: PlayerType) {
+    init(_ type: PieceType, owner: PlayerType) {
         self.owner = owner
+        self.type = type
+    }
+
+    public func allowsMove(from startPosition: Position, to endPosition: Position) -> Bool {
+        type.movementRules.allowsMove(from: startPosition, to: endPosition, standardOrientation: standardOrientation)
+    }
+
+    public func powerUp() {
+        type.powerUp()
+    }
+
+    public func powerDown() {
+        type.powerDown()
     }
 }
 
-extension GeneralPiece {
-    var defaultOrientation: Bool {
+extension Piece {
+    var standardOrientation: Bool {
         owner == .player1
-    }
-}
-
-public enum PlayerType {
-    case player1
-    case player2
-
-    var next: Self {
-        switch self {
-        case .player1:
-            return .player2
-        case .player2:
-            return .player1
-        }
     }
 }

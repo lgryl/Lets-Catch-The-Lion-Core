@@ -26,9 +26,13 @@ public class Game {
         self.board = board
     }
 
-    internal func place(_ piece: Piece, at position: Position) {
+    internal func insert(_ piece: Piece, at position: Position) {
         player(of: piece.owner).pieces.append(piece)
         board.place(piece, at: position)
+    }
+
+    public func placeCapturedPiece(_ piece: Piece, at position: Position) throws {
+        throw GameError.illegalMove
     }
 
     @discardableResult
@@ -69,7 +73,11 @@ public class Game {
             throw GameError.illegalMove
         }
         let capturedPiece = try board.movePiece(from: startPosition, to: endPosition)
+        capturedPiece?.powerDown()
         numberOfMoves += 1
+        if board.position(endPosition, withinPlayerArea: pieceToMove.owner.next) {
+            pieceToMove.powerUp()
+        }
         if let winner = checkForWinner(lastMovedPiece: pieceToMove,
                                        lastCapturedPiece: capturedPiece) {
             state = .finished(winner: winner)
@@ -85,16 +93,16 @@ public class Game {
     }
 
     private func checkForWinner(lastMovedPiece: Piece, lastCapturedPiece: Piece?) -> PlayerType? {
-        if lastCapturedPiece is Lion {
+        if lastCapturedPiece?.type == .lion {
             return lastCapturedPiece?.owner.next
         }
         guard let movedPiecePosition = board.position(of: lastMovedPiece) else {
             fatalError("Moved error should be on the board")
         }
-        if board.position(movedPiecePosition, withinPlayerArea: lastMovedPiece.owner.next) {
-            if lastMovedPiece is Lion {
-                return canPieceBeCapturedInNextTurn(lastMovedPiece) ? nil : lastMovedPiece.owner
-            }
+        let movedToOpponentsArea = board.position(movedPiecePosition, withinPlayerArea: lastMovedPiece.owner.next)
+        let lastMovedPieceWasLion = lastMovedPiece.type == .lion
+        let isSave = !canPieceBeCapturedInNextTurn(lastMovedPiece)
+        if movedToOpponentsArea && lastMovedPieceWasLion && isSave {
             return lastMovedPiece.owner
         }
 

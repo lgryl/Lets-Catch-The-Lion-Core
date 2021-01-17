@@ -15,8 +15,6 @@
 		CB0069C1259DC701008DD9F8 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069C0259DC701008DD9F8 /* Player.swift */; };
 		CB0069C5259DC73C008DD9F8 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069C4259DC73C008DD9F8 /* Piece.swift */; };
 		CB0069D1259DCA2C008DD9F8 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069D0259DCA2C008DD9F8 /* BoardTests.swift */; };
-		CB0069D5259DFE81008DD9F8 /* Lion.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069D4259DFE81008DD9F8 /* Lion.swift */; };
-		CB0069D9259E0ABB008DD9F8 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069D8259E0ABB008DD9F8 /* Dog.swift */; };
 		CB0069DD259E0C18008DD9F8 /* PiecesArrangement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0069DC259E0C18008DD9F8 /* PiecesArrangement.swift */; };
 		CB1DB0A925A38772004C92AE /* LionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB1DB0A825A38772004C92AE /* LionTests.swift */; };
 		CB23CB4D25A0C23B00C35A41 /* DobutsuPiecesArrangement.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23CB4C25A0C23B00C35A41 /* DobutsuPiecesArrangement.swift */; };
@@ -25,15 +23,20 @@
 		CB23CB5B25A0CE4400C35A41 /* DobutsuBoardCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23CB5A25A0CE4400C35A41 /* DobutsuBoardCreatorTests.swift */; };
 		CB23CB6125A0CEB200C35A41 /* BoardHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23CB6025A0CEB200C35A41 /* BoardHelpers.swift */; };
 		CB23CB6625A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23CB6525A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift */; };
-		CB2E0FF225A0D0B400AA1A9F /* Giraffe.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0FF125A0D0B400AA1A9F /* Giraffe.swift */; };
-		CB2E0FF625A0D12200AA1A9F /* Elephant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0FF525A0D12200AA1A9F /* Elephant.swift */; };
-		CB2E0FFA25A0D17200AA1A9F /* Chick.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0FF925A0D17200AA1A9F /* Chick.swift */; };
-		CB2E0FFE25A0D2C800AA1A9F /* Cat.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E0FFD25A0D2C800AA1A9F /* Cat.swift */; };
 		CB2E100825A2126400AA1A9F /* BoardCretor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E100725A2126400AA1A9F /* BoardCretor.swift */; };
 		CBA6B93F25A3899000B33E60 /* ChickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B93E25A3899000B33E60 /* ChickTests.swift */; };
 		CBA6B94525A4BB3900B33E60 /* ElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */; };
 		CBAF5D5225A6140700D53C76 /* GiraffeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */; };
 		CBE526BF25AF5D4300CC0D9E /* GameError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526BE25AF5D4300CC0D9E /* GameError.swift */; };
+		CBE526C325B34B8D00CC0D9E /* PlayerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526C225B34B8D00CC0D9E /* PlayerType.swift */; };
+		CBE526C725B34BC700CC0D9E /* PieceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526C625B34BC700CC0D9E /* PieceType.swift */; };
+		CBE526CE25B34FB600CC0D9E /* MovementRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526CD25B34FB600CC0D9E /* MovementRules.swift */; };
+		CBE526D525B3501700CC0D9E /* ChickMovementRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526D425B3501700CC0D9E /* ChickMovementRules.swift */; };
+		CBE526E125B352E600CC0D9E /* ElephantMovementRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526E025B352E600CC0D9E /* ElephantMovementRules.swift */; };
+		CBE526E525B3535C00CC0D9E /* GiraffeMovementRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526E425B3535C00CC0D9E /* GiraffeMovementRules.swift */; };
+		CBE526E925B353DB00CC0D9E /* LionMovementRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526E825B353DB00CC0D9E /* LionMovementRules.swift */; };
+		CBE526ED25B3831600CC0D9E /* HenMovementRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526EC25B3831600CC0D9E /* HenMovementRules.swift */; };
+		CBE526FB25B489D200CC0D9E /* HenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE526FA25B489D200CC0D9E /* HenTests.swift */; };
 		CBE8EBB625AA04A6000B9F2A /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8EBB525AA04A6000B9F2A /* GameState.swift */; };
 		CBE8EBBA25AA0A88000B9F2A /* GameVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBE8EBB925AA0A88000B9F2A /* GameVariant.swift */; };
 /* End PBXBuildFile section */
@@ -60,8 +63,6 @@
 		CB0069C0259DC701008DD9F8 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		CB0069C4259DC73C008DD9F8 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
 		CB0069D0259DCA2C008DD9F8 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
-		CB0069D4259DFE81008DD9F8 /* Lion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lion.swift; sourceTree = "<group>"; };
-		CB0069D8259E0ABB008DD9F8 /* Dog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		CB0069DC259E0C18008DD9F8 /* PiecesArrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiecesArrangement.swift; sourceTree = "<group>"; };
 		CB1DB0A825A38772004C92AE /* LionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionTests.swift; sourceTree = "<group>"; };
 		CB23CB4C25A0C23B00C35A41 /* DobutsuPiecesArrangement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobutsuPiecesArrangement.swift; sourceTree = "<group>"; };
@@ -70,15 +71,20 @@
 		CB23CB5A25A0CE4400C35A41 /* DobutsuBoardCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DobutsuBoardCreatorTests.swift; sourceTree = "<group>"; };
 		CB23CB6025A0CEB200C35A41 /* BoardHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHelpers.swift; sourceTree = "<group>"; };
 		CB23CB6525A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoroGoroBoardCreatorTests.swift; sourceTree = "<group>"; };
-		CB2E0FF125A0D0B400AA1A9F /* Giraffe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Giraffe.swift; sourceTree = "<group>"; };
-		CB2E0FF525A0D12200AA1A9F /* Elephant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elephant.swift; sourceTree = "<group>"; };
-		CB2E0FF925A0D17200AA1A9F /* Chick.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chick.swift; sourceTree = "<group>"; };
-		CB2E0FFD25A0D2C800AA1A9F /* Cat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cat.swift; sourceTree = "<group>"; };
 		CB2E100725A2126400AA1A9F /* BoardCretor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCretor.swift; sourceTree = "<group>"; };
 		CBA6B93E25A3899000B33E60 /* ChickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickTests.swift; sourceTree = "<group>"; };
 		CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantTests.swift; sourceTree = "<group>"; };
 		CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeTests.swift; sourceTree = "<group>"; };
 		CBE526BE25AF5D4300CC0D9E /* GameError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameError.swift; sourceTree = "<group>"; };
+		CBE526C225B34B8D00CC0D9E /* PlayerType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerType.swift; sourceTree = "<group>"; };
+		CBE526C625B34BC700CC0D9E /* PieceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieceType.swift; sourceTree = "<group>"; };
+		CBE526CD25B34FB600CC0D9E /* MovementRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementRules.swift; sourceTree = "<group>"; };
+		CBE526D425B3501700CC0D9E /* ChickMovementRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickMovementRules.swift; sourceTree = "<group>"; };
+		CBE526E025B352E600CC0D9E /* ElephantMovementRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantMovementRules.swift; sourceTree = "<group>"; };
+		CBE526E425B3535C00CC0D9E /* GiraffeMovementRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeMovementRules.swift; sourceTree = "<group>"; };
+		CBE526E825B353DB00CC0D9E /* LionMovementRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionMovementRules.swift; sourceTree = "<group>"; };
+		CBE526EC25B3831600CC0D9E /* HenMovementRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HenMovementRules.swift; sourceTree = "<group>"; };
+		CBE526FA25B489D200CC0D9E /* HenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HenTests.swift; sourceTree = "<group>"; };
 		CBE8EBB525AA04A6000B9F2A /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		CBE8EBB925AA0A88000B9F2A /* GameVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameVariant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,13 +174,9 @@
 		CB1DB08F25A38354004C92AE /* Pieces */ = {
 			isa = PBXGroup;
 			children = (
+				CBE526D325B34FBA00CC0D9E /* Movement */,
 				CB0069C4259DC73C008DD9F8 /* Piece.swift */,
-				CB0069D4259DFE81008DD9F8 /* Lion.swift */,
-				CB0069D8259E0ABB008DD9F8 /* Dog.swift */,
-				CB2E0FF125A0D0B400AA1A9F /* Giraffe.swift */,
-				CB2E0FF525A0D12200AA1A9F /* Elephant.swift */,
-				CB2E0FF925A0D17200AA1A9F /* Chick.swift */,
-				CB2E0FFD25A0D2C800AA1A9F /* Cat.swift */,
+				CBE526C625B34BC700CC0D9E /* PieceType.swift */,
 			);
 			path = Pieces;
 			sourceTree = "<group>";
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				CB0069C0259DC701008DD9F8 /* Player.swift */,
+				CBE526C225B34B8D00CC0D9E /* PlayerType.swift */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -228,12 +231,26 @@
 		CBA6B93D25A3898100B33E60 /* Pieces */ = {
 			isa = PBXGroup;
 			children = (
-				CB1DB0A825A38772004C92AE /* LionTests.swift */,
 				CBA6B93E25A3899000B33E60 /* ChickTests.swift */,
+				CBE526FA25B489D200CC0D9E /* HenTests.swift */,
+				CB1DB0A825A38772004C92AE /* LionTests.swift */,
 				CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */,
 				CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */,
 			);
 			path = Pieces;
+			sourceTree = "<group>";
+		};
+		CBE526D325B34FBA00CC0D9E /* Movement */ = {
+			isa = PBXGroup;
+			children = (
+				CBE526CD25B34FB600CC0D9E /* MovementRules.swift */,
+				CBE526D425B3501700CC0D9E /* ChickMovementRules.swift */,
+				CBE526E025B352E600CC0D9E /* ElephantMovementRules.swift */,
+				CBE526E425B3535C00CC0D9E /* GiraffeMovementRules.swift */,
+				CBE526E825B353DB00CC0D9E /* LionMovementRules.swift */,
+				CBE526EC25B3831600CC0D9E /* HenMovementRules.swift */,
+			);
+			path = Movement;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,22 +362,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBE526C325B34B8D00CC0D9E /* PlayerType.swift in Sources */,
+				CBE526E125B352E600CC0D9E /* ElephantMovementRules.swift in Sources */,
+				CBE526ED25B3831600CC0D9E /* HenMovementRules.swift in Sources */,
 				CBE526BF25AF5D4300CC0D9E /* GameError.swift in Sources */,
-				CB2E0FFA25A0D17200AA1A9F /* Chick.swift in Sources */,
+				CBE526C725B34BC700CC0D9E /* PieceType.swift in Sources */,
+				CBE526CE25B34FB600CC0D9E /* MovementRules.swift in Sources */,
 				CB0069DD259E0C18008DD9F8 /* PiecesArrangement.swift in Sources */,
 				CB0069C5259DC73C008DD9F8 /* Piece.swift in Sources */,
-				CB2E0FF625A0D12200AA1A9F /* Elephant.swift in Sources */,
 				CB23CB5125A0C25A00C35A41 /* ArrayBasedPiecesArrangement.swift in Sources */,
 				CB0069BD259DC3E1008DD9F8 /* Board.swift in Sources */,
 				CB2E100825A2126400AA1A9F /* BoardCretor.swift in Sources */,
+				CBE526D525B3501700CC0D9E /* ChickMovementRules.swift in Sources */,
 				CB23CB5525A0CCCE00C35A41 /* GoroGoroPiecesArrangement.swift in Sources */,
-				CB0069D9259E0ABB008DD9F8 /* Dog.swift in Sources */,
+				CBE526E525B3535C00CC0D9E /* GiraffeMovementRules.swift in Sources */,
 				CBE8EBB625AA04A6000B9F2A /* GameState.swift in Sources */,
-				CB2E0FFE25A0D2C800AA1A9F /* Cat.swift in Sources */,
 				CB0069C1259DC701008DD9F8 /* Player.swift in Sources */,
 				CB0069B9259DC39E008DD9F8 /* Game.swift in Sources */,
-				CB2E0FF225A0D0B400AA1A9F /* Giraffe.swift in Sources */,
-				CB0069D5259DFE81008DD9F8 /* Lion.swift in Sources */,
+				CBE526E925B353DB00CC0D9E /* LionMovementRules.swift in Sources */,
 				CB23CB4D25A0C23B00C35A41 /* DobutsuPiecesArrangement.swift in Sources */,
 				CBE8EBBA25AA0A88000B9F2A /* GameVariant.swift in Sources */,
 			);
@@ -373,6 +392,7 @@
 				CB23CB6125A0CEB200C35A41 /* BoardHelpers.swift in Sources */,
 				CBA6B93F25A3899000B33E60 /* ChickTests.swift in Sources */,
 				CBA6B94525A4BB3900B33E60 /* ElephantTests.swift in Sources */,
+				CBE526FB25B489D200CC0D9E /* HenTests.swift in Sources */,
 				CB1DB0A925A38772004C92AE /* LionTests.swift in Sources */,
 				CB0069D1259DCA2C008DD9F8 /* BoardTests.swift in Sources */,
 				CB23CB5B25A0CE4400C35A41 /* DobutsuBoardCreatorTests.swift in Sources */,

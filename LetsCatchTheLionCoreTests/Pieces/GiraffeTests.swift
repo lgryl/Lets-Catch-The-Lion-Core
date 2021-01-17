@@ -4,11 +4,11 @@ import XCTest
 @testable import LetsCatchTheLionCore
 
 class GiraffeTests: XCTestCase {
-    var tested: Giraffe!
+    var tested: Piece!
 
     override func setUp() {
         super.setUp()
-        tested = Giraffe(owner: .player1)
+        tested = Piece(.giraffe, owner: .player1)
     }
 
     override func tearDown() {
