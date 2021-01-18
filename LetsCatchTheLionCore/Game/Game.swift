@@ -24,12 +24,16 @@ public class Game {
 
     internal init(board: Board) {
         self.board = board
+        for piece in board.allPieces {
+            player(of: piece.owner).pieces.append(piece)
+        }
     }
 
-    internal func insert(_ piece: Piece, at position: Position) {
-        player(of: piece.owner).pieces.append(piece)
-        board.place(piece, at: position)
-    }
+    //Get rid of that method, pass board with pieces to the init and assign pieces to players
+//    internal func insert(_ piece: Piece, at position: Position) {
+//        player(of: piece.owner).pieces.append(piece)
+//        board.place(piece, at: position)
+//    }
 
     public func placeCapturedPiece(_ piece: Piece, at position: Position) throws {
         throw GameError.illegalMove
@@ -63,6 +67,9 @@ public class Game {
         guard let startPosition = board.position(of: pieceToMove) else {
             throw GameError.pieceNotFound
         }
+        guard player(of: pieceToMove.owner).pieces.contains(where: { $0 === pieceToMove }) else {
+            throw GameError.pieceNotFound
+        }
         guard pieceToMove.owner == currentPlayer else {
             throw GameError.playOrderViolation
         }
@@ -73,22 +80,26 @@ public class Game {
             throw GameError.illegalMove
         }
         let capturedPiece = try board.movePiece(from: startPosition, to: endPosition)
-        capturedPiece?.powerDown()
         numberOfMoves += 1
-        if board.position(endPosition, withinPlayerArea: pieceToMove.owner.next) {
-            pieceToMove.powerUp()
-        }
-        if let winner = checkForWinner(lastMovedPiece: pieceToMove,
-                                       lastCapturedPiece: capturedPiece) {
-            state = .finished(winner: winner)
-            return
-        }
+        capturedPiece?.powerDown()
 
+        let capturedPieceSnapshot = capturedPiece?.copy() as? Piece
         if let capturedPiece = capturedPiece {
             capturedPiece.owner = capturedPiece.owner.next
             player(of: currentPlayer).capturedPieces.append(capturedPiece)
             player(of: currentPlayer.next).pieces.removeAll { $0 === capturedPiece }
         }
+
+        if board.position(endPosition, withinPlayerArea: pieceToMove.owner.next) {
+            pieceToMove.powerUp()
+        }
+        if let winner = checkForWinner(lastMovedPiece: pieceToMove,
+                                       lastCapturedPiece: capturedPieceSnapshot) {
+            state = .finished(winner: winner)
+            return
+        }
+
+
         startNextPlayerTurn()
     }
 

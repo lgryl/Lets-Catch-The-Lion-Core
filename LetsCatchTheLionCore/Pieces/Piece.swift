@@ -29,3 +29,11 @@ extension Piece {
         owner == .player1
     }
 }
+
+extension Piece: NSCopying {
+    public func copy(with zone: NSZone? = nil) -> Any {
+        Piece(type, owner: owner)
+    }
+
+
+}

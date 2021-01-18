@@ -26,6 +26,10 @@ internal class Board {
         return pieces[position.x][position.y]
     }
 
+    public var allPieces: [Piece] {
+        pieces.flatMap { $0 }.compactMap { $0 }
+    }
+
     @discardableResult
     public func place(_ piece: Piece, at position: Position) -> Piece? {
         guard positionWithinBoard(position) else { return nil }
