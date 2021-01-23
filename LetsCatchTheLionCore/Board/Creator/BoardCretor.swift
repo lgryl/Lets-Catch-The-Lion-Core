@@ -3,8 +3,8 @@
 import Foundation
 
 internal struct BoardCreator {
-    let player1: Player
-    let player2: Player
+    let groundPlayer: Player
+    let skyPlayer: Player
 
     func createBoard(from configuration: BoardConfiguration) -> Board {
         let board = Board(width: configuration.piecesArrangement.width,
@@ -14,10 +14,10 @@ internal struct BoardCreator {
             for y in 0 ..< configuration.piecesArrangement.height {
                 if let piece = configuration.piecesArrangement.pieceAt(x: x, y: y) {
                     switch piece.owner {
-                    case .player1:
-                        player1.pieces.append(piece)
-                    case .player2:
-                        player2.pieces.append(piece)
+                    case .ground:
+                        groundPlayer.pieces.append(piece)
+                    case .sky:
+                        skyPlayer.pieces.append(piece)
                     }
                     board.place(piece, at: Position(x: x, y: y))
                 }

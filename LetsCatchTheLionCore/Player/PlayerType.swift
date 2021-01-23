@@ -2,16 +2,16 @@
 
 import Foundation
 
-public enum PlayerType {
-    case player1
-    case player2
+public enum PlayerType: String {
+    case ground
+    case sky
 
     var next: Self {
         switch self {
-        case .player1:
-            return .player2
-        case .player2:
-            return .player1
+        case .ground:
+            return .sky
+        case .sky:
+            return .ground
         }
     }
 }

@@ -8,7 +8,7 @@ class GiraffeTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        tested = Piece(.giraffe, owner: .player1)
+        tested = Piece(.giraffe, owner: .ground)
     }
 
     override func tearDown() {

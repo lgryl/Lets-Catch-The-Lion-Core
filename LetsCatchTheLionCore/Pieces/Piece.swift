@@ -26,7 +26,7 @@ public class Piece {
 
 extension Piece {
     var standardOrientation: Bool {
-        owner == .player1
+        owner == .ground
     }
 }
 
@@ -34,6 +34,10 @@ extension Piece: NSCopying {
     public func copy(with zone: NSZone? = nil) -> Any {
         Piece(type, owner: owner)
     }
+}
 
-
+extension Piece: CustomStringConvertible {
+    public var description: String {
+        "\(type.rawValue.capitalized) of \(owner.rawValue.capitalized)"
+    }
 }

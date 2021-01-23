@@ -4,11 +4,11 @@ import Foundation
 
 public class Game {
     let board: Board
-    private let player1 = Player()
-    private let player2 = Player()
+    private let groundPlayer = Player()
+    private let skyPlayer = Player()
     
     private(set) public var numberOfMoves = 0
-    private(set) public var state: GameState = .ongoing(currentPlayer: .player1)
+    private(set) public var state: GameState = .ongoing(currentPlayer: .ground)
 
     public var currentPlayer: PlayerType? {
         guard case let GameState.ongoing(currentPlayer) = state else { return nil }
@@ -18,7 +18,7 @@ public class Game {
     public init(gameVariant: GameVariant) {
         let configuration = BoardConfigurationFactory.configuration(for: gameVariant)
 
-        let boardCreator = BoardCreator(player1: player1, player2: player2)
+        let boardCreator = BoardCreator(groundPlayer: groundPlayer, skyPlayer: skyPlayer)
         board = boardCreator.createBoard(from: configuration)
     }
 
@@ -28,12 +28,6 @@ public class Game {
             player(of: piece.owner).pieces.append(piece)
         }
     }
-
-    //Get rid of that method, pass board with pieces to the init and assign pieces to players
-//    internal func insert(_ piece: Piece, at position: Position) {
-//        player(of: piece.owner).pieces.append(piece)
-//        board.place(piece, at: position)
-//    }
 
     public func placeCapturedPiece(_ piece: Piece, at position: Position) throws {
         throw GameError.illegalMove
@@ -144,10 +138,10 @@ public class Game {
 
     private func player(of type: PlayerType) -> Player {
         switch type {
-        case .player1:
-            return player1
-        case .player2:
-            return player2
+        case .ground:
+            return groundPlayer
+        case .sky:
+            return skyPlayer
         }
     }
 

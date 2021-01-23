@@ -5,20 +5,20 @@ import XCTest
 
 class DobutsuBoardCreatorTests: XCTestCase {
     private var tested: BoardCreator!
-    private var player1: Player!
-    private var player2: Player!
+    private var groundPlayer: Player!
+    private var skyPlayer: Player!
 
     override func setUpWithError() throws {
         super.setUp()
-        player1 = Player()
-        player2 = Player()
-        tested = BoardCreator(player1: player1, player2: player2)
+        groundPlayer = Player()
+        skyPlayer = Player()
+        tested = BoardCreator(groundPlayer: groundPlayer, skyPlayer: skyPlayer)
     }
 
     override func tearDown() {
         tested = nil
-        player2 = nil
-        player1 = nil
+        skyPlayer = nil
+        groundPlayer = nil
         super.tearDown()
     }
 

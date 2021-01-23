@@ -80,9 +80,9 @@ internal class Board {
 
     func position(_ position: Position, withinPlayerArea player: PlayerType) -> Bool {
         switch player {
-        case .player1:
+        case .ground:
             return position.y > height - 1 - playerAreaHeight
-        case .player2:
+        case .sky:
             return position.y < playerAreaHeight
         }
     }
@@ -98,10 +98,3 @@ fileprivate struct BoardVariant {
     var width: Int
     var height: Int
 }
-
-public struct Position {
-    var x: Int
-    var y: Int
-}
-
-extension Position: Equatable {}

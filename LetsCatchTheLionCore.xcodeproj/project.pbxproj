@@ -24,6 +24,7 @@
 		CB23CB6125A0CEB200C35A41 /* BoardHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23CB6025A0CEB200C35A41 /* BoardHelpers.swift */; };
 		CB23CB6625A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23CB6525A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift */; };
 		CB2E100825A2126400AA1A9F /* BoardCretor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E100725A2126400AA1A9F /* BoardCretor.swift */; };
+		CB771DE025B60C5500687715 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB771DDF25B60C5500687715 /* Position.swift */; };
 		CBA6B93F25A3899000B33E60 /* ChickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B93E25A3899000B33E60 /* ChickTests.swift */; };
 		CBA6B94525A4BB3900B33E60 /* ElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */; };
 		CBAF5D5225A6140700D53C76 /* GiraffeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */; };
@@ -72,6 +73,7 @@
 		CB23CB6025A0CEB200C35A41 /* BoardHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardHelpers.swift; sourceTree = "<group>"; };
 		CB23CB6525A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoroGoroBoardCreatorTests.swift; sourceTree = "<group>"; };
 		CB2E100725A2126400AA1A9F /* BoardCretor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCretor.swift; sourceTree = "<group>"; };
+		CB771DDF25B60C5500687715 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
 		CBA6B93E25A3899000B33E60 /* ChickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickTests.swift; sourceTree = "<group>"; };
 		CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantTests.swift; sourceTree = "<group>"; };
 		CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeTests.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				CB0069BC259DC3E1008DD9F8 /* Board.swift */,
 				CBE8EBB925AA0A88000B9F2A /* GameVariant.swift */,
+				CB771DDF25B60C5500687715 /* Position.swift */,
 				CB1DB09025A38375004C92AE /* PiecesArrangement */,
 				CB1DB0A325A385B0004C92AE /* Creator */,
 			);
@@ -376,6 +379,7 @@
 				CBE526D525B3501700CC0D9E /* ChickMovementRules.swift in Sources */,
 				CB23CB5525A0CCCE00C35A41 /* GoroGoroPiecesArrangement.swift in Sources */,
 				CBE526E525B3535C00CC0D9E /* GiraffeMovementRules.swift in Sources */,
+				CB771DE025B60C5500687715 /* Position.swift in Sources */,
 				CBE8EBB625AA04A6000B9F2A /* GameState.swift in Sources */,
 				CB0069C1259DC701008DD9F8 /* Player.swift in Sources */,
 				CB0069B9259DC39E008DD9F8 /* Game.swift in Sources */,

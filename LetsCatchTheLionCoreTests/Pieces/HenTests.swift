@@ -4,88 +4,88 @@ import XCTest
 @testable import LetsCatchTheLionCore
 
 class HenTests: XCTestCase {
-    var tested1: Piece!
-    var tested2: Piece!
+    var testedGroundHen: Piece!
+    var testedSkyHen: Piece!
 
     override func setUp() {
         super.setUp()
-        tested1 = Piece(.hen, owner: .player1)
-        tested2 = Piece(.hen, owner: .player2)
+        testedGroundHen = Piece(.hen, owner: .ground)
+        testedSkyHen = Piece(.hen, owner: .sky)
     }
 
     override func tearDown() {
-        tested2 = nil
-        tested1 = nil
+        testedSkyHen = nil
+        testedGroundHen = nil
         super.tearDown()
     }
 
     func test_hen_cantStayInTheSameSquare() {
-        XCTAssertFalse(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 4)))
-        XCTAssertFalse(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 4)))
+        XCTAssertFalse(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 4)))
+        XCTAssertFalse(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 4)))
 
     }
 
-    func test_player1Hen_canMoveUp() {
-        XCTAssertTrue(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 3)))
+    func test_groundPlayerHen_canMoveUp() {
+        XCTAssertTrue(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 3)))
     }
 
-    func test_player1Hen_canMoveUpLeft() {
-        XCTAssertTrue(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 3)))
+    func test_groundPlayerHen_canMoveUpLeft() {
+        XCTAssertTrue(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 3)))
     }
 
-    func test_player1Hen_canMoveUpRight() {
-        XCTAssertTrue(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 3)))
+    func test_groundPlayerHen_canMoveUpRight() {
+        XCTAssertTrue(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 3)))
     }
 
-    func test_player1Hen_canMoveLeft() {
-        XCTAssertTrue(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 4)))
+    func test_groundPlayerHen_canMoveLeft() {
+        XCTAssertTrue(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 4)))
     }
 
-    func test_player1Hen_canMoveRight() {
-        XCTAssertTrue(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 4)))
+    func test_groundPlayerHen_canMoveRight() {
+        XCTAssertTrue(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 4)))
     }
 
-    func test_player1Hen_canMoveDown() {
-        XCTAssertTrue(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 5)))
+    func test_groundPlayerHen_canMoveDown() {
+        XCTAssertTrue(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 5)))
     }
 
-    func test_player1Hen_cantMoveDownLeft() {
-        XCTAssertFalse(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 5)))
+    func test_groundPlayerHen_cantMoveDownLeft() {
+        XCTAssertFalse(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 5)))
     }
 
-    func test_player1Hen_cantMoveDownRight() {
-        XCTAssertFalse(tested1.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 5)))
+    func test_groundPlayerHen_cantMoveDownRight() {
+        XCTAssertFalse(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 5)))
     }
 
-    func test_player2Hen_canMoveDown() {
-        XCTAssertTrue(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 5)))
+    func test_skyPlayerHen_canMoveDown() {
+        XCTAssertTrue(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 5)))
     }
 
-    func test_player2Hen_canMoveDownLeft() {
-        XCTAssertTrue(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 5)))
+    func test_skyPlayerHen_canMoveDownLeft() {
+        XCTAssertTrue(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 5)))
     }
 
-    func test_player2Hen_canMoveDownRight() {
-        XCTAssertTrue(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 5)))
+    func test_skyPlayerHen_canMoveDownRight() {
+        XCTAssertTrue(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 5)))
     }
 
-    func test_player2Hen_canMoveLeft() {
-        XCTAssertTrue(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 4)))
+    func test_skyPlayerHen_canMoveLeft() {
+        XCTAssertTrue(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 4)))
     }
 
-    func test_player2Hen_canMoveRight() {
-        XCTAssertTrue(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 4)))
+    func test_skyPlayerHen_canMoveRight() {
+        XCTAssertTrue(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 4)))
     }
 
-    func test_player2Hen_canMoveUp() {
-        XCTAssertTrue(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 3)))
+    func test_skyPlayerHen_canMoveUp() {
+        XCTAssertTrue(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 3)))
     }
 
-    func test_player2Hen_cantMoveUpLeft() {
-        XCTAssertFalse(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 3)))
+    func test_skyPlayerHen_cantMoveUpLeft() {
+        XCTAssertFalse(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 3)))
     }
 
-    func test_player2Hen_cantMoveUpRigth() {
-        XCTAssertFalse(tested2.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 3)))
+    func test_skyPlayerHen_cantMoveUpRigth() {
+        XCTAssertFalse(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 3)))
     }
 }
