@@ -3,9 +3,10 @@
 import Foundation
 
 public class Game {
+    private let groundPlayer: Player
+    private let skyPlayer: Player
+
     let board: Board
-    private let groundPlayer = Player()
-    private let skyPlayer = Player()
     
     private(set) public var numberOfMoves = 0
     private(set) public var state: GameState = .ongoing(currentPlayer: .ground)
@@ -16,13 +17,21 @@ public class Game {
     }
 
     public init(gameVariant: GameVariant) {
+        groundPlayer = Player()
+        skyPlayer = Player()
+
         let configuration = BoardConfigurationFactory.configuration(for: gameVariant)
 
         let boardCreator = BoardCreator(groundPlayer: groundPlayer, skyPlayer: skyPlayer)
         board = boardCreator.createBoard(from: configuration)
     }
 
-    internal init(board: Board) {
+    internal init(board: Board,
+                  groundPlayer: Player = Player(),
+                  skyPlayer: Player = Player()) {
+        self.groundPlayer = groundPlayer
+        self.skyPlayer = skyPlayer
+
         self.board = board
         for piece in board.allPieces {
             player(of: piece.owner).pieces.append(piece)
@@ -30,7 +39,20 @@ public class Game {
     }
 
     public func placeCapturedPiece(_ piece: Piece, at position: Position) throws {
-        throw GameError.illegalMove
+        guard case let GameState.ongoing(currentPlayer) = state else {
+            throw GameError.gameAlreadyFinished
+        }
+        guard player(of: currentPlayer).capturedPieces.contains(where: { $0 === piece }) else {
+            throw GameError.pieceNotFound
+        }
+        guard piece.owner == currentPlayer else {
+            throw GameError.playOrderViolation
+        }
+        guard board.pieceAt(position) == nil else {
+            throw GameError.illegalMove
+        }
+        board.place(piece, at: position)
+        numberOfMoves += 1
     }
 
     @discardableResult

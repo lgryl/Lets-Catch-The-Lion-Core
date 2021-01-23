@@ -4,6 +4,7 @@ import Foundation
 
 public enum GameError: Error {
     case pieceNotFound
+    case pieceNotOnTheBoard
     case playOrderViolation
     case capturingOwnPiece
     case illegalMove
