@@ -6,6 +6,6 @@ struct GiraffeMovementRules: MovementRules {
     func allowsMove(from startPosition: Position,
                     to endPosition: Position,
                     standardOrientation: Bool) -> Bool {
-        (startPosition.x == endPosition.x && startPosition.y != endPosition.y) || (startPosition.x != endPosition.x && startPosition.y == endPosition.y)
+        abs(endPosition.x - startPosition.x) + abs(endPosition.y - startPosition.y) == 1
     }
 }

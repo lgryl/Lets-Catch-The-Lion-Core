@@ -7,6 +7,6 @@ struct ElephantMovementRules: MovementRules {
                     to endPosition: Position,
                     standardOrientation: Bool) -> Bool {
         guard startPosition != endPosition else { return false }
-        return abs(endPosition.x - startPosition.x) == abs(endPosition.y - startPosition.y)
+        return abs(endPosition.x - startPosition.x) == 1 && abs(endPosition.y - startPosition.y) == 1
     }
 }

@@ -29,9 +29,9 @@ class ElephantTests: XCTestCase {
         XCTAssertTrue(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 3)))
     }
 
-    func test_elephant_canMoveTwoSquaresUpLeft() {
-        XCTAssertTrue(testedGroundElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 2)))
-        XCTAssertTrue(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 2)))
+    func test_elephant_cantMoveTwoSquaresUpLeft() {
+        XCTAssertFalse(testedGroundElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 2)))
+        XCTAssertFalse(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 2)))
     }
 
     func test_elephant_canMoveUpRight() {
@@ -39,9 +39,9 @@ class ElephantTests: XCTestCase {
         XCTAssertTrue(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 3)))
     }
 
-    func test_elephant_canMoveTwoSquaresUpRightTwoSquares() {
-        XCTAssertTrue(testedGroundElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 2)))
-        XCTAssertTrue(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 2)))
+    func test_elephant_cantMoveTwoSquaresUpRightTwoSquares() {
+        XCTAssertFalse(testedGroundElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 2)))
+        XCTAssertFalse(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 2)))
     }
 
     func test_elephant_canMoveDownLeft() {
@@ -49,9 +49,9 @@ class ElephantTests: XCTestCase {
         XCTAssertTrue(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 5)))
     }
 
-    func test_elephant_canMoveTwoSquaresDownLeft() {
-        XCTAssertTrue(testedGroundElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 6)))
-        XCTAssertTrue(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 6)))
+    func test_elephant_cantMoveTwoSquaresDownLeft() {
+        XCTAssertFalse(testedGroundElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 6)))
+        XCTAssertFalse(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 6)))
     }
 
     func test_elephant_canMoveDownRight() {
@@ -59,9 +59,9 @@ class ElephantTests: XCTestCase {
         XCTAssertTrue(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 5)))
     }
 
-    func test_elephant_canMoveTwoSquaresDownRight() {
-        XCTAssertTrue(testedGroundElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 6)))
-        XCTAssertTrue(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 6)))
+    func test_elephant_cantMoveTwoSquaresDownRight() {
+        XCTAssertFalse(testedGroundElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 6)))
+        XCTAssertFalse(testedSkyElephant.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 6)))
     }
 
     func test_elephant_cantMoveUp() {

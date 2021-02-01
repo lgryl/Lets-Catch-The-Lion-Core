@@ -48,7 +48,23 @@ class ChickTests: XCTestCase {
         XCTAssertFalse(testedSkyChick.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 3)))
     }
 
-    func test_chich_canMoveToPositionWithNegativeCoordinates() {
+    func test_chick_canMoveToPositionWithNegativeCoordinates() {
         XCTAssertTrue(testedGroundChick.allowsMove(from: Position(x: 0, y: 0), to: Position(x: 0, y: -1)))
+    }
+
+    func test_groundChick_cantMoveLeft() {
+        XCTAssertFalse(testedGroundChick.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 4)))
+    }
+
+    func test_groundChick_cantMoveUpLeft() {
+        XCTAssertFalse(testedGroundChick.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 3)))
+    }
+
+    func test_groundChick_cantMoveRight() {
+        XCTAssertFalse(testedGroundChick.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 4)))
+    }
+
+    func test_groundChick_cantMoveUpRight() {
+        XCTAssertFalse(testedGroundChick.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 3)))
     }
 }

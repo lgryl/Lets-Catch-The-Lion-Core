@@ -9,8 +9,10 @@ public struct Position {
 
 extension Position: Equatable {}
 
+extension Position: Hashable {}
+
 extension Position: CustomStringConvertible {
     public var description: String {
-        return "x: \(x), y: \(y)"
+        return "(x: \(x), y: \(y))"
     }
 }

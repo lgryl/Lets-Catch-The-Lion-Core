@@ -69,6 +69,22 @@ public class Game {
         return true
     }
 
+    public func availableMoves(for piece: Piece) -> Set<Position> {
+        guard let startPosition = board.position(of: piece) else {
+            return []
+        }
+        var availableMoves: Set<Position> = []
+        for x in 0 ..< board.width {
+            for y in 0 ..< board.height {
+                let endPosition = Position(x: x, y: y)
+                if canMove(from: startPosition, to: endPosition) {
+                    availableMoves.insert(endPosition)
+                }
+            }
+        }
+        return availableMoves
+    }
+
     public func move(from startPosition: Position, to endPosition: Position) throws {
         guard let piece = board.pieceAt(startPosition) else {
             throw GameError.pieceNotFound
@@ -165,6 +181,10 @@ public class Game {
         case .sky:
             return skyPlayer
         }
+    }
+
+    public func pieceAt(_ position: Position) -> Piece? {
+        board.pieceAt(position)
     }
 
     public func pieces(of playerType: PlayerType) -> [Piece] {

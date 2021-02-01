@@ -25,6 +25,7 @@
 		CB23CB6625A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB23CB6525A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift */; };
 		CB2E100825A2126400AA1A9F /* BoardCretor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2E100725A2126400AA1A9F /* BoardCretor.swift */; };
 		CB771DE025B60C5500687715 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB771DDF25B60C5500687715 /* Position.swift */; };
+		CB9A0D2925C08E7F009B3E79 /* GameAvailableMovesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB9A0D2825C08E7F009B3E79 /* GameAvailableMovesTests.swift */; };
 		CBA6B93F25A3899000B33E60 /* ChickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B93E25A3899000B33E60 /* ChickTests.swift */; };
 		CBA6B94525A4BB3900B33E60 /* ElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */; };
 		CBAF5D5225A6140700D53C76 /* GiraffeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */; };
@@ -78,6 +79,7 @@
 		CB23CB6525A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoroGoroBoardCreatorTests.swift; sourceTree = "<group>"; };
 		CB2E100725A2126400AA1A9F /* BoardCretor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardCretor.swift; sourceTree = "<group>"; };
 		CB771DDF25B60C5500687715 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		CB9A0D2825C08E7F009B3E79 /* GameAvailableMovesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAvailableMovesTests.swift; sourceTree = "<group>"; };
 		CBA6B93E25A3899000B33E60 /* ChickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickTests.swift; sourceTree = "<group>"; };
 		CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantTests.swift; sourceTree = "<group>"; };
 		CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeTests.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				CBBBBCB725BC42C700E4B91A /* GameSetupTests.swift */,
 				CBBBBCBD25BC43A100E4B91A /* GamePiecePlacingTests.swift */,
 				CBBBBCC525BC447400E4B91A /* GameWinningTests.swift */,
+				CB9A0D2825C08E7F009B3E79 /* GameAvailableMovesTests.swift */,
 				CBBBBCC925BC44D200E4B91A /* GameTestsHelpers.swift */,
 			);
 			path = Game;
@@ -418,6 +421,7 @@
 				CBAF5D5225A6140700D53C76 /* GiraffeTests.swift in Sources */,
 				CBBBBCCA25BC44D200E4B91A /* GameTestsHelpers.swift in Sources */,
 				CB0069B5259DC376008DD9F8 /* GameMovementTests.swift in Sources */,
+				CB9A0D2925C08E7F009B3E79 /* GameAvailableMovesTests.swift in Sources */,
 				CB23CB6625A0CF5500C35A41 /* GoroGoroBoardCreatorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

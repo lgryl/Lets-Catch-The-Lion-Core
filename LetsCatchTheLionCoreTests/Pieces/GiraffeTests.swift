@@ -24,32 +24,32 @@ class GiraffeTests: XCTestCase {
         XCTAssertTrue(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 3)))
     }
 
-    func test_giraffe_canMoveUpTwoSquares() {
-        XCTAssertTrue(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 2)))
+    func test_giraffe_cantMoveUpTwoSquares() {
+        XCTAssertFalse(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 2)))
     }
 
     func test_giraffe_canMoveDown() {
         XCTAssertTrue(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 5)))
     }
 
-    func test_giraffe_canMoveDownTwoSquares() {
-        XCTAssertTrue(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 6)))
+    func test_giraffe_cantMoveDownTwoSquares() {
+        XCTAssertFalse(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 6)))
     }
 
     func test_giraffe_canMoveLeft() {
         XCTAssertTrue(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 3, y: 4)))
     }
 
-    func test_giraffe_canMoveLeftTwoSquares() {
-        XCTAssertTrue(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 4)))
+    func test_giraffe_cantMoveLeftTwoSquares() {
+        XCTAssertFalse(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 2, y: 4)))
     }
 
     func test_giraffe_canMoveRight() {
         XCTAssertTrue(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 4)))
     }
 
-    func test_giraffe_canMoveRightTwoSquares() {
-        XCTAssertTrue(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 4)))
+    func test_giraffe_cantMoveRightTwoSquares() {
+        XCTAssertFalse(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 6, y: 4)))
     }
 
     func test_giraffe_cantMoveUpLeft() {
