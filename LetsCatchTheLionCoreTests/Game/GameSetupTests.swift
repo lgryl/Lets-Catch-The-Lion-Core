@@ -18,13 +18,11 @@ class GameSetupTests: XCTestCase {
     }
 
     func test_defaultGameCrearted_boardShouldBe3TilesWide() {
-        let board = tested.board
-        XCTAssertEqual(3, board.width)
+        XCTAssertEqual(3, tested.boardWidth)
     }
 
     func test_defaultGameCrearted_boardShouldBe4TilesHigh() {
-        let board = tested.board
-        XCTAssertEqual(4, board.height)
+        XCTAssertEqual(4, tested.boardHeight)
     }
 
     func test_forNewGame_groundPlayerShouldNotHaveAnyCapturedPieces() {

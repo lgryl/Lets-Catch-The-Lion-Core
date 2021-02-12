@@ -18,7 +18,7 @@ class GameMovementTests: XCTestCase {
 
     func test_afterInvalidMove_currentPlayerIsStillGroundPlayer() {
         XCTAssertTrue(tested.currentPlayer == .ground)
-        guard let piece = tested.board.pieceAt(Position(x: 1, y: 2)),
+        guard let piece = tested.pieceAt(Position(x: 1, y: 2)),
               piece.type == .chick else {
             XCTFail()
             return
@@ -29,7 +29,7 @@ class GameMovementTests: XCTestCase {
 
     func test_afterValidMove_currentPlayerIsSkyPlayer() {
         XCTAssertTrue(tested.currentPlayer == .ground)
-        guard let piece = tested.board.pieceAt(Position(x: 2, y: 3)),
+        guard let piece = tested.pieceAt(Position(x: 2, y: 3)),
               piece.type == .giraffe else {
             XCTFail()
             return
@@ -40,7 +40,7 @@ class GameMovementTests: XCTestCase {
 
     func test_after2ValidMoves_currentPlayerIsGroundPlayerAgain() {
         XCTAssertTrue(tested.currentPlayer == .ground)
-        guard let piece1 = tested.board.pieceAt(Position(x: 2, y: 3)),
+        guard let piece1 = tested.pieceAt(Position(x: 2, y: 3)),
               piece1.type == .giraffe else {
             XCTFail()
             return
@@ -49,7 +49,7 @@ class GameMovementTests: XCTestCase {
         _ = try? tested.move(piece1, to: Position(x: 2, y: 2))
         XCTAssertTrue(tested.currentPlayer == .sky)
 
-        guard let piece2 = tested.board.pieceAt(Position(x: 0, y: 0)),
+        guard let piece2 = tested.pieceAt(Position(x: 0, y: 0)),
               piece2.type == .giraffe else {
             XCTFail()
             return
@@ -61,7 +61,7 @@ class GameMovementTests: XCTestCase {
 
     func test_movingPieceOfNonCurrentPlayer_throwsException() {
         XCTAssertTrue(tested.currentPlayer == .ground)
-        guard let piece = tested.board.pieceAt(Position(x: 0, y: 0)),
+        guard let piece = tested.pieceAt(Position(x: 0, y: 0)),
               piece.type == .giraffe else {
             XCTFail()
             return
@@ -80,7 +80,7 @@ class GameMovementTests: XCTestCase {
 
     func test_afterMovingPieceOfNonCurrentPlayer_turnDoesntChange() {
         XCTAssertTrue(tested.currentPlayer == .ground)
-        guard let piece = tested.board.pieceAt(Position(x: 0, y: 0)),
+        guard let piece = tested.pieceAt(Position(x: 0, y: 0)),
               piece.type == .giraffe else {
             XCTFail()
             return
@@ -90,7 +90,7 @@ class GameMovementTests: XCTestCase {
     }
 
     func test_afterMovingPieceIntoOpponentsPiece_pieceIsCaptured() {
-        guard let capturedPiece = tested.board.pieceAt(Position(x: 1, y: 1)) else {
+        guard let capturedPiece = tested.pieceAt(Position(x: 1, y: 1)) else {
             XCTFail()
             return
         }
@@ -106,7 +106,7 @@ class GameMovementTests: XCTestCase {
         board.place(Piece(.chick, owner: .ground), at: Position(x: 1, y: 2))
         tested = Game(board: board)
 
-        guard let capturedPiece = tested.board.pieceAt(Position(x: 1, y: 1)) else {
+        guard let capturedPiece = tested.pieceAt(Position(x: 1, y: 1)) else {
             XCTFail()
             return
         }

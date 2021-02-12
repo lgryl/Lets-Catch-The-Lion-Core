@@ -5,8 +5,7 @@ import Foundation
 public class Game {
     private let groundPlayer: Player
     private let skyPlayer: Player
-
-    let board: Board
+    private let board: Board
 
     public var boardWidth: Int {
         board.width
