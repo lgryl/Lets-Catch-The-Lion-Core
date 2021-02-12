@@ -44,27 +44,11 @@ public class Game {
             player(of: piece.owner).pieces.append(piece)
         }
     }
+}
 
-    public func placeCapturedPiece(_ piece: Piece, at position: Position) throws {
-        guard case let GameState.ongoing(currentPlayer) = state else {
-            throw GameError.gameAlreadyFinished
-        }
-        guard player(of: currentPlayer).capturedPieces.contains(where: { $0 === piece }) else {
-            throw GameError.pieceNotFound
-        }
-        guard piece.owner == currentPlayer else {
-            throw GameError.playOrderViolation
-        }
-        guard board.pieceAt(position) == nil else {
-            throw GameError.illegalMove
-        }
-        board.place(piece, at: position)
-        numberOfMoves += 1
-        startNextPlayerTurn()
-    }
-
+public extension Game {
     @discardableResult
-    public func canMove(from startPosition: Position, to endPosition: Position) -> Bool {
+    func canMove(from startPosition: Position, to endPosition: Position) -> Bool {
         guard let pieceToMove = board.pieceAt(startPosition) else {
             return false
         }
@@ -77,7 +61,7 @@ public class Game {
         return true
     }
 
-    public func availableMoves(for piece: Piece) -> Set<Position> {
+    func availableMoves(for piece: Piece) -> Set<Position> {
         guard let startPosition = board.position(of: piece) else {
             return []
         }
@@ -93,14 +77,14 @@ public class Game {
         return availableMoves
     }
 
-    public func move(from startPosition: Position, to endPosition: Position) throws {
+    func move(from startPosition: Position, to endPosition: Position) throws {
         guard let piece = board.pieceAt(startPosition) else {
             throw GameError.pieceNotFound
         }
         try move(piece, to: endPosition)
     }
 
-    public func move(_ pieceToMove: Piece, to endPosition: Position) throws {
+    func move(_ pieceToMove: Piece, to endPosition: Position) throws {
         guard case let GameState.ongoing(currentPlayer) = state else {
             throw GameError.gameAlreadyFinished
         }
@@ -141,6 +125,38 @@ public class Game {
         startNextPlayerTurn()
     }
 
+    func placeCapturedPiece(_ piece: Piece, at position: Position) throws {
+        guard case let GameState.ongoing(currentPlayer) = state else {
+            throw GameError.gameAlreadyFinished
+        }
+        guard player(of: currentPlayer).capturedPieces.contains(where: { $0 === piece }) else {
+            throw GameError.pieceNotFound
+        }
+        guard piece.owner == currentPlayer else {
+            throw GameError.playOrderViolation
+        }
+        guard board.pieceAt(position) == nil else {
+            throw GameError.illegalMove
+        }
+        board.place(piece, at: position)
+        numberOfMoves += 1
+        startNextPlayerTurn()
+    }
+
+    func pieceAt(_ position: Position) -> Piece? {
+        board.pieceAt(position)
+    }
+
+    func pieces(of playerType: PlayerType) -> [Piece] {
+        player(of: playerType).pieces
+    }
+
+    func capturedPieces(of playerType: PlayerType) -> [Piece] {
+        player(of: playerType).capturedPieces
+    }
+}
+
+private extension Game {
     private func checkForWinner(lastMovedPiece: Piece, lastCapturedPiece: Piece?) -> PlayerType? {
         if lastCapturedPiece?.type == .lion {
             return lastCapturedPiece?.owner.next
@@ -187,17 +203,5 @@ public class Game {
         case .sky:
             return skyPlayer
         }
-    }
-
-    public func pieceAt(_ position: Position) -> Piece? {
-        board.pieceAt(position)
-    }
-
-    public func pieces(of playerType: PlayerType) -> [Piece] {
-        player(of: playerType).pieces
-    }
-
-    public func capturedPieces(of playerType: PlayerType) -> [Piece] {
-        player(of: playerType).capturedPieces
     }
 }
