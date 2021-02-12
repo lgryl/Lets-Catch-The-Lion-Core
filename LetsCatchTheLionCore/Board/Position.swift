@@ -5,6 +5,11 @@ import Foundation
 public struct Position {
     var x: Int
     var y: Int
+
+    public init(x: Int, y: Int) {
+        self.x = x
+        self.y = y
+    }
 }
 
 extension Position: Equatable {}

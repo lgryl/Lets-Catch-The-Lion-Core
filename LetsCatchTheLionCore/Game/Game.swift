@@ -7,7 +7,15 @@ public class Game {
     private let skyPlayer: Player
 
     let board: Board
-    
+
+    public var boardWidth: Int {
+        board.width
+    }
+
+    public var boardHeight: Int {
+        board.height
+    }
+
     private(set) public var numberOfMoves = 0
     private(set) public var state: GameState = .ongoing(currentPlayer: .ground)
 
@@ -56,7 +64,7 @@ public class Game {
     }
 
     @discardableResult
-    private func canMove(from startPosition: Position, to endPosition: Position) -> Bool {
+    public func canMove(from startPosition: Position, to endPosition: Position) -> Bool {
         guard let pieceToMove = board.pieceAt(startPosition) else {
             return false
         }

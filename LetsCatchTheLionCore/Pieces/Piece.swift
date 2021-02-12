@@ -3,8 +3,8 @@
 import Foundation
 
 public class Piece {
-    private(set) var type: PieceType
-    var owner: PlayerType
+    private(set) public var type: PieceType
+    internal(set) public var owner: PlayerType
 
     init(_ type: PieceType, owner: PlayerType) {
         self.owner = owner

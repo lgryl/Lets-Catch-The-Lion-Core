@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum PieceType: String {
+public enum PieceType: String {
     case chick
     case hen
     case giraffe
