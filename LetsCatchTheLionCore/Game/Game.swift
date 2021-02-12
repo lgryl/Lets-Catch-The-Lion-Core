@@ -61,6 +61,7 @@ public class Game {
         }
         board.place(piece, at: position)
         numberOfMoves += 1
+        startNextPlayerTurn()
     }
 
     @discardableResult
@@ -138,8 +139,6 @@ public class Game {
             state = .finished(winner: winner)
             return
         }
-
-
         startNextPlayerTurn()
     }
 
@@ -148,7 +147,7 @@ public class Game {
             return lastCapturedPiece?.owner.next
         }
         guard let movedPiecePosition = board.position(of: lastMovedPiece) else {
-            fatalError("Moved error should be on the board")
+            fatalError("Moved piece should be on the board")
         }
         let movedToOpponentsArea = board.position(movedPiecePosition, withinPlayerArea: lastMovedPiece.owner.next)
         let lastMovedPieceWasLion = lastMovedPiece.type == .lion

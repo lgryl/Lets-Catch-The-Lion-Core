@@ -54,6 +54,18 @@ class GamePiecePlacingTests: XCTestCase {
         XCTAssertNoThrow(try tested.placeCapturedPiece(groundPlayerCapturedChick, at: Position(x: 1, y: 1)))
     }
 
+    func test_correctPlacingPieceOfCurrentPlayer_changesCurrentPlayer() {
+        XCTAssertEqual(.ground, tested.currentPlayer)
+        try? tested.placeCapturedPiece(groundPlayerCapturedChick, at: Position(x: 1, y: 1))
+        XCTAssertEqual(.sky, tested.currentPlayer)
+    }
+
+    func test_incorrectPlacingPieceOfCurrentPlayer_doesntChangeCurrentPlayer() {
+        XCTAssertEqual(.ground, tested.currentPlayer)
+        try? tested.placeCapturedPiece(groundPlayerCapturedChick, at: Position(x: 1, y: 3))
+        XCTAssertEqual(.ground, tested.currentPlayer)
+    }
+
     func test_placingPiece_increasesNumberOfMoves() {
         let numberOfMoves = tested.numberOfMoves
         try? tested.placeCapturedPiece(groundPlayerCapturedChick, at: Position(x: 2, y: 3))
