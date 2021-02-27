@@ -6,32 +6,27 @@ internal class Board {
     private var pieces: [[Piece?]]
     private let playerAreaHeight: Int
 
-    public var width: Int {
-        pieces.count
-    }
+    internal var width: Int { pieces.count }
+    internal var height: Int { pieces[0].count }
 
-    public var height: Int {
-        pieces[0].count
-    }
-
-    public init(width: Int, height: Int, playerAreaHeight: Int) {
+    internal init(width: Int, height: Int, playerAreaHeight: Int) {
         pieces = Array(repeating: Array(repeating: nil, count: height), count: width)
         self.playerAreaHeight = playerAreaHeight
     }
 
-    public func pieceAt(_ position: Position) -> Piece? {
+    internal func pieceAt(_ position: Position) -> Piece? {
         guard positionWithinBoard(position) else {
             return nil
         }
         return pieces[position.x][position.y]
     }
 
-    public var allPieces: [Piece] {
+    internal var allPieces: [Piece] {
         pieces.flatMap { $0 }.compactMap { $0 }
     }
 
     @discardableResult
-    public func place(_ piece: Piece, at position: Position) -> Piece? {
+    internal func place(_ piece: Piece, at position: Position) -> Piece? {
         guard positionWithinBoard(position) else { return nil }
 
         let previousPiece = pieceAt(position)
@@ -52,7 +47,7 @@ internal class Board {
     }
 
     @discardableResult
-    public func movePiece(from startPosition: Position, to endPosition: Position) throws -> Piece? {
+    internal func movePiece(from startPosition: Position, to endPosition: Position) throws -> Piece? {
         guard positionWithinBoard(startPosition),
               positionWithinBoard(endPosition) else {
             throw Error.positionOutsideBoard
@@ -87,7 +82,7 @@ internal class Board {
         }
     }
 
-    public enum Error: Swift.Error {
+    internal enum Error: Swift.Error {
         case invalidMove
         case pieceNotFound
         case positionOutsideBoard

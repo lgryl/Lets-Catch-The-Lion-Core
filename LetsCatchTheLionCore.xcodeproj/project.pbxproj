@@ -29,6 +29,8 @@
 		CBA6B93F25A3899000B33E60 /* ChickTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B93E25A3899000B33E60 /* ChickTests.swift */; };
 		CBA6B94525A4BB3900B33E60 /* ElephantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */; };
 		CBAF5D5225A6140700D53C76 /* GiraffeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */; };
+		CBB8C2BE25D6CC73008E2CE9 /* BoardConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8C2BD25D6CC73008E2CE9 /* BoardConfiguration.swift */; };
+		CBB8C2C225D6CC8C008E2CE9 /* BoardConfigurationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBB8C2C125D6CC8C008E2CE9 /* BoardConfigurationFactory.swift */; };
 		CBBBBCB825BC42C700E4B91A /* GameSetupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBBBCB725BC42C700E4B91A /* GameSetupTests.swift */; };
 		CBBBBCBE25BC43A100E4B91A /* GamePiecePlacingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBBBCBD25BC43A100E4B91A /* GamePiecePlacingTests.swift */; };
 		CBBBBCC625BC447400E4B91A /* GameWinningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBBBCC525BC447400E4B91A /* GameWinningTests.swift */; };
@@ -83,6 +85,8 @@
 		CBA6B93E25A3899000B33E60 /* ChickTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChickTests.swift; sourceTree = "<group>"; };
 		CBA6B94425A4BB3900B33E60 /* ElephantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElephantTests.swift; sourceTree = "<group>"; };
 		CBAF5D5125A6140700D53C76 /* GiraffeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiraffeTests.swift; sourceTree = "<group>"; };
+		CBB8C2BD25D6CC73008E2CE9 /* BoardConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardConfiguration.swift; sourceTree = "<group>"; };
+		CBB8C2C125D6CC8C008E2CE9 /* BoardConfigurationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardConfigurationFactory.swift; sourceTree = "<group>"; };
 		CBBBBCB725BC42C700E4B91A /* GameSetupTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSetupTests.swift; sourceTree = "<group>"; };
 		CBBBBCBD25BC43A100E4B91A /* GamePiecePlacingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePiecePlacingTests.swift; sourceTree = "<group>"; };
 		CBBBBCC525BC447400E4B91A /* GameWinningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameWinningTests.swift; sourceTree = "<group>"; };
@@ -167,6 +171,8 @@
 			children = (
 				CB0069BC259DC3E1008DD9F8 /* Board.swift */,
 				CBE8EBB925AA0A88000B9F2A /* GameVariant.swift */,
+				CBB8C2BD25D6CC73008E2CE9 /* BoardConfiguration.swift */,
+				CBB8C2C125D6CC8C008E2CE9 /* BoardConfigurationFactory.swift */,
 				CB771DDF25B60C5500687715 /* Position.swift */,
 				CB1DB09025A38375004C92AE /* PiecesArrangement */,
 				CB1DB0A325A385B0004C92AE /* Creator */,
@@ -381,6 +387,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBE526C325B34B8D00CC0D9E /* PlayerType.swift in Sources */,
+				CBB8C2BE25D6CC73008E2CE9 /* BoardConfiguration.swift in Sources */,
 				CBE526E125B352E600CC0D9E /* ElephantMovementRules.swift in Sources */,
 				CBE526ED25B3831600CC0D9E /* HenMovementRules.swift in Sources */,
 				CBE526BF25AF5D4300CC0D9E /* GameError.swift in Sources */,
@@ -394,6 +401,7 @@
 				CBE526D525B3501700CC0D9E /* ChickMovementRules.swift in Sources */,
 				CB23CB5525A0CCCE00C35A41 /* GoroGoroPiecesArrangement.swift in Sources */,
 				CBE526E525B3535C00CC0D9E /* GiraffeMovementRules.swift in Sources */,
+				CBB8C2C225D6CC8C008E2CE9 /* BoardConfigurationFactory.swift in Sources */,
 				CB771DE025B60C5500687715 /* Position.swift in Sources */,
 				CBE8EBB625AA04A6000B9F2A /* GameState.swift in Sources */,
 				CB0069C1259DC701008DD9F8 /* Player.swift in Sources */,

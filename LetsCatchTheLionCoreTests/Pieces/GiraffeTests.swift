@@ -67,5 +67,4 @@ class GiraffeTests: XCTestCase {
     func test_giraffe_cantMoveDownRigth() {
         XCTAssertFalse(tested.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 5, y: 5)))
     }
-
 }

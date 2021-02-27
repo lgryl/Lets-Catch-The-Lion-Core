@@ -22,7 +22,6 @@ class HenTests: XCTestCase {
     func test_hen_cantStayInTheSameSquare() {
         XCTAssertFalse(testedGroundHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 4)))
         XCTAssertFalse(testedSkyHen.allowsMove(from: Position(x: 4, y: 4), to: Position(x: 4, y: 4)))
-
     }
 
     func test_groundPlayerHen_canMoveUp() {
